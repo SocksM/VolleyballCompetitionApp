@@ -1,58 +1,58 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using VolleyballCompetitionApp.Business.DTOs;
 using VolleyballCompetitionApp.Business.Models;
-using VolleyballCompetitionApp.Repository;
+using VolleyballCompetitionApp.Business.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business
 {
 	public class ClubCollection
 	{
-		private readonly string _connectionString;
-		public List<ClubModel> Clubs { get; private set; }
+		private readonly IClubRepository _clubRepository;
+		private readonly ITeamRepository _teamRepository;
+		private readonly IPlayerRepository _playerRepository;
 
-		public ClubCollection(string connectionString) => _connectionString = connectionString;
-
-		public void AddClub(int id, string name, List<TeamModel>? teams = null)
+		public ClubCollection(IClubRepository clubRepository, ITeamRepository teamRepository , IPlayerRepository playerRepository)
 		{
-			Clubs.Add(new ClubModel(_connectionString, id, name, teams));
+			_clubRepository = clubRepository;
+			_teamRepository = teamRepository;
+			_playerRepository = playerRepository;
 		}
 
-		public void CreateClub(string name)
+		public ClubModel CreateClub(string name) // ipv van void clubmodle voor testing
 		{
 			// check if parameters are valid
-			if (name.Length > 255)
+			if (!CheckIfNameValid(name))
 			{
-				throw new ArgumentException("Name can't be longer than 255.");
+				throw new ArgumentException($"Name can't be longer than 255.  Name Currently is currently {name.Length} long.");
 			}
 
 			// database data uploading
-			ClubRepository clubRepository = new ClubRepository(_connectionString);
-			int id = clubRepository.Create(new Repository.DTOs.ClubDTO
-			{
-				Name = name
-			});
+			int id = _clubRepository.Create(name);
 
 			// if no errors change var in class
-			Clubs.Add(new ClubModel(_connectionString, id, name));
+			return new ClubModel(_clubRepository, _teamRepository, _playerRepository, id, name); // addclub()
 		}
 
 		public void DeleteClubById(int id)
 		{
-			foreach (ClubModel club in Clubs)
+			_clubRepository.Delete(id);
+			foreach (TeamDTO teamDTO in _teamRepository.FindByClubId(id))
 			{
-				if (club.Id == id)
+				foreach (PlayerDTO playerDTO in _playerRepository.FindByTeamId(teamDTO.Id))
 				{
-					// delete the database row with the same id
-					ClubRepository clubRepository = new ClubRepository(_connectionString);
-					clubRepository.Delete(club.Id);
-					// if no error change var in class
-					Clubs.Remove(club);
-					break;
+					_playerRepository.Delete(playerDTO.Id);
 				}
+				_teamRepository.Delete(teamDTO.Id);
 			}
+		}
+
+		private bool CheckIfNameValid(string name)
+		{
+			// check if parameter is valid
+			if (name.Length > 255)
+			{
+				return false;
+			}
+			return true;
 		}
 	}
 }

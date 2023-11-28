@@ -1,0 +1,273 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj": {}
+  },
+  "projects": {
+    "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj",
+        "projectName": "VolleyballCompetitionApp.Business",
+        "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj",
+        "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nieks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj",
+        "projectName": "VolleyballCompetitionApp.Repository",
+        "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj",
+        "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nieks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {
+              "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "dependencies": {
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.5, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj",
+        "projectName": "VolleyballCompetitionApp.UnitTests",
+        "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj",
+        "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nieks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
+              },
+              "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj"
+              },
+              "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Presentation.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Presentation.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.6.0, )"
+            },
+            "NUnit": {
+              "target": "Package",
+              "version": "[3.13.3, )"
+            },
+            "NUnit.Analyzers": {
+              "target": "Package",
+              "version": "[3.6.1, )"
+            },
+            "NUnit3TestAdapter": {
+              "target": "Package",
+              "version": "[4.2.1, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Presentation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Presentation.csproj",
+        "projectName": "VolleyballCompetitionApp.Presentation",
+        "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Presentation.csproj",
+        "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
+        "outputPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\nieks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net7.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net7.0": {
+            "targetAlias": "net7.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net7.0": {
+          "targetAlias": "net7.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

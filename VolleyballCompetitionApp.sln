@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolleyballCompetitionApp.Pr
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolleyballCompetitionApp.Business", "VolleyballCompetitionApp.Business\VolleyballCompetitionApp.Business.csproj", "{5D9A8C0A-1A03-4D14-AF47-B532199A25D0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolleyballCompetitionApp.Repository", "VolleyballCompetitionApp.Repository\VolleyballCompetitionApp.Repository.csproj", "{88D06968-7ACB-4D23-8258-55A7785084A7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolleyballCompetitionApp.Repository", "VolleyballCompetitionApp.Repository\VolleyballCompetitionApp.Repository.csproj", "{88D06968-7ACB-4D23-8258-55A7785084A7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolleyballCompetitionApp.UnitTests", "VolleyballCompetitionApp.UnitTests\VolleyballCompetitionApp.UnitTests.csproj", "{ABC7309B-5D14-45D4-A840-9CD227123F66}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{88D06968-7ACB-4D23-8258-55A7785084A7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88D06968-7ACB-4D23-8258-55A7785084A7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{88D06968-7ACB-4D23-8258-55A7785084A7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ABC7309B-5D14-45D4-A840-9CD227123F66}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABC7309B-5D14-45D4-A840-9CD227123F66}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABC7309B-5D14-45D4-A840-9CD227123F66}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABC7309B-5D14-45D4-A840-9CD227123F66}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

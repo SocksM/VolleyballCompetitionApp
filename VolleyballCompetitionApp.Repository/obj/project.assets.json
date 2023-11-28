@@ -146,6 +146,16 @@
             "rid": "win"
           }
         }
+      },
+      "VolleyballCompetitionApp.Business/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/VolleyballCompetitionApp.Business.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VolleyballCompetitionApp.Business.dll": {}
+        }
       }
     }
   },
@@ -462,11 +472,17 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "VolleyballCompetitionApp.Business/1.0.0": {
+      "type": "project",
+      "path": "../VolleyballCompetitionApp.Business/VolleyballCompetitionApp.Business.csproj",
+      "msbuildProject": "../VolleyballCompetitionApp.Business/VolleyballCompetitionApp.Business.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net7.0": [
-      "System.Data.SqlClient >= 4.8.5"
+      "System.Data.SqlClient >= 4.8.5",
+      "VolleyballCompetitionApp.Business >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -495,7 +511,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
+              "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

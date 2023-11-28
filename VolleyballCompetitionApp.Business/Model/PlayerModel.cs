@@ -1,10 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using VolleyballCompetitionApp.Repository.DTOs;
-using VolleyballCompetitionApp.Repository;
+﻿using System.Xml.Linq;
+using VolleyballCompetitionApp.Business.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business.Models
 {
@@ -13,11 +8,12 @@ namespace VolleyballCompetitionApp.Business.Models
         public int Id { get; private set; }
         public int TeamId { get; private set; }
         public string Name { get; private set; }
-        private readonly string _connectionString;
 
-        public PlayerModel(string connectionString, int id, int teamId, string name) // done
+		private readonly IPlayerRepository _playerRepository;
+
+		public PlayerModel(IPlayerRepository playerRepository, int id, int teamId, string name) // done
         {
-            _connectionString = connectionString;
+            _playerRepository = playerRepository;
             Id = id;
             TeamId = teamId;
             Name = name;
@@ -25,16 +21,26 @@ namespace VolleyballCompetitionApp.Business.Models
 
 		public void SetName(string newName) // changes the name in the class and in the database
 		{
+			if (!CheckIfNameValid(newName))
+			{
+				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {newName.Length} long.");
+			}
+
 			// database data uploading
-			PlayerRepository playerRepository = new PlayerRepository(_connectionString); // krijg de connstring op een manier zie todo op lijn 16
-			PlayerDTO dto = new PlayerDTO();
-			dto.Name = newName;
-			dto.Id = Id;
-			dto.TeamId = TeamId;
-			playerRepository.Update(dto);
+			_playerRepository.Update(Id, TeamId, newName);
 
 			// if no error: change var in class
 			Name = newName;
+		}
+
+		private bool CheckIfNameValid(string name)
+		{
+			// check if parameter is valid
+			if (name.Length > 255)
+			{
+				return false;
+			}
+			return true;
 		}
 	}
 }

@@ -1,81 +1,73 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
-using VolleyballCompetitionApp.Repository;
-using VolleyballCompetitionApp.Repository.DTOs;
+﻿using VolleyballCompetitionApp.Business.DTOs;
+using VolleyballCompetitionApp.Business.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business.Models
 {
-    public class ClubModel
-    {
-        public int Id { get; private set; }
-        public string Name { get; private set; }
-        public List<TeamModel>? Teams { get; private set; }
-        private readonly string _connectionString;
-        
-        public ClubModel(string connectionString, int id, string name, List<TeamModel>? teams = null)
-        {
-            _connectionString = connectionString;
-            Id = id;
-            Name = name;
-            Teams = teams;  
-        }
+	public class ClubModel
+	{
+		public int Id { get; private set; }
+		public string Name { get; private set; }
 
-        public void SetName(string newName) // changes the name in the class and in the database
-        {
-            // database data uploading
-            ClubRepository clubRepository = new ClubRepository(_connectionString); // krijg de connstring op een manier zie todo op lijn 16
-            ClubDTO dto = new ClubDTO();
-            dto.Name = newName;
-            dto.Id = Id;
-            clubRepository.Update(dto);
+		private readonly IClubRepository _clubRepository;
+		private readonly ITeamRepository _teamRepository;
+		private readonly IPlayerRepository _playerRepository;
 
-            // if no error: change var in class
-            Name = newName;
-        }
+		public ClubModel(IClubRepository clubRepository, ITeamRepository teamRepository, IPlayerRepository playerRepository, int id, string name)
+		{
+			_clubRepository = clubRepository;
+			_teamRepository = teamRepository;
+			_playerRepository = playerRepository;
+			Id = id;
+			Name = name;
+		}
 
-        public void AddTeam(int id, string name, int clubId, List<PlayerModel>? playerModels = null) 
-        {
-            Teams.Add(new TeamModel(_connectionString, id, name, clubId, playerModels));
-        }
-
-        public void CreateTeam(string name, int clubId)
-        {
+		public void SetName(string newName) // changes the name in the class and in the database
+		{
 			// check if parameters are valid
-			if (name.Length > 255)
+			if (!CheckIfNameValid(newName))
 			{
-				throw new ArgumentException("Name can't be longer than 255.");
+				throw new ArgumentException($"Name can't be longer than 255.  Name Currently is currently {newName.Length} long.");
 			}
 
 			// database data uploading
-			TeamRepository teamRepository = new TeamRepository(_connectionString);
-			int id = teamRepository.Create(new TeamDTO 
-            { 
-                Name = name, 
-                ClubId = clubId 
-            });
+			_clubRepository.Update(Id, newName);
 
-            // if no errors change var in class
-            Teams.Add(new TeamModel(_connectionString, id, name, clubId));
+			// if no error: change var in class
+			Name = newName;
 		}
 
-		public void DeleteTeamById(int id)
-        {
-            foreach (TeamModel team in Teams)
-            {
-                if (team.Id == id)
-                {
-                    // delete the database row with the same id
-                    TeamRepository teamRepository = new TeamRepository(_connectionString);
-                    teamRepository.Delete(team.Id);
-                    // if no error change var in class
-                    Teams.Remove(team);
-                    break;
-                }
-            }
-        }
-    }
+		public TeamModel CreateTeam(string name, int clubId)
+		{
+			// check if parameters are valid
+			if (!CheckIfNameValid(name))
+			{
+				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {name.Length} long.");
+			}
+
+			// database data uploading
+			int id = _teamRepository.Create(clubId, name);
+
+			// if no errors change var in class
+			return new TeamModel(_teamRepository, _playerRepository, id, clubId, name);
+		}
+
+		public void DeleteTeamById(int id) 
+		{
+			foreach (PlayerDTO playerDTO in _playerRepository.FindByTeamId(id))
+			{
+				_playerRepository.Delete(playerDTO.Id);
+			}
+			_teamRepository.Delete(id);
+		}
+
+		private bool CheckIfNameValid (string name)
+		{
+			// check if parameter is valid
+			if (name.Length > 255)
+			{
+				return false;
+			}
+			return true;
+		}
+	}
 }
