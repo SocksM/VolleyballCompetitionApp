@@ -26,7 +26,7 @@ namespace VolleyballCompetitionApp.Business.Models
 			// check if parameters are valid
 			if (!CheckIfNameValid(newName))
 			{
-				throw new ArgumentException($"Name can't be longer than 255.  Name Currently is currently {newName.Length} long.");
+				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {newName.Length} long.");
 			}
 
 			// database data uploading
@@ -36,9 +36,13 @@ namespace VolleyballCompetitionApp.Business.Models
 			Name = newName;
 		}
 
-		public TeamModel CreateTeam(string name, int clubId)
+		public TeamModel CreateTeam(string name, int clubId = -1)
 		{
 			// check if parameters are valid
+			if (clubId == -1)
+			{
+				clubId = Id;
+			}
 			if (!CheckIfNameValid(name))
 			{
 				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {name.Length} long.");

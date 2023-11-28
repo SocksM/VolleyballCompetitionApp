@@ -11,11 +11,12 @@ namespace VolleyballCompetitionApp.Business.Models
 		private readonly ITeamRepository _teamRepository;
 		private readonly IPlayerRepository _playerRepository;
 
-		public TeamModel(ITeamRepository teamRepository, IPlayerRepository playerRepository, int id, int ClubId, string name)
+		public TeamModel(ITeamRepository teamRepository, IPlayerRepository playerRepository, int id, int clubId, string name)
 		{
 			_teamRepository = teamRepository;
 			_playerRepository = playerRepository;
 			Id = id;
+			ClubId = clubId;
 			Name = name;
 		}
 
@@ -33,9 +34,13 @@ namespace VolleyballCompetitionApp.Business.Models
 			Name = newName;
 		}
 
-		public PlayerModel CreatePlayer(string name, int teamId) // gets a player from the database to add to the variable
+		public PlayerModel CreatePlayer(string name, int teamId = -1) // gets a player from the database to add to the variable
 		{
 			// check if parameters are valid
+			if (teamId == -1)
+			{
+				teamId = Id;
+			}
 			if (!CheckIfNameValid(name))
 			{
 				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {name.Length} long.");

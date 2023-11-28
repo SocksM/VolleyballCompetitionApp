@@ -1,3 +1,5 @@
+using System;
+using System.Xml.Linq;
 using VolleyballCompetitionApp.Business;
 using VolleyballCompetitionApp.Business.Models;
 using VolleyballCompetitionApp.UnitTests.DummyRepos;
@@ -60,7 +62,7 @@ namespace VolleyballCompetitionApp.UnitTests
 		}
 
 		[Test]
-		public void CreateClubTest ()
+		public void CreateClubTest()
 		{
 			string connectionString = "FakeDBConnString";
 			ClubCollection clubCollection = new ClubCollection(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString));
@@ -79,19 +81,202 @@ namespace VolleyballCompetitionApp.UnitTests
 			ClubCollection clubCollection = new ClubCollection(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString));
 			string name = "";
 			int length = 256;
-			for (int i = 0; i < length; i++)
-			{
-				name += "a";
-			}
+			for (int i = 0; i < length; i++) name += "a";
+			ArgumentException exception = new ArgumentException();
 			try
 			{
-				ClubModel clubModel = clubCollection.CreateClub(name);
+				clubCollection.CreateClub(name);
 			}
-			catch (ArgumentException exception)
+			catch (ArgumentException caughtException)
 			{
-				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255.  Name Currently is currently {length} long.");
+				exception = caughtException;
+			}
+			finally
+			{
+				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
 				Assert.True(exception.Message == expectedException.Message);
-				
+			}
+		}
+
+		[Test]
+		public void CreateTeamTest()
+		{
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+			string name = "team da";
+			int clubId = 20;
+			TeamModel teamModel = clubModel.CreateTeam(name, clubId);
+			bool assert = true;
+			if (!(teamModel.Name == name)) assert = false;
+			if (!(teamModel.ClubId == clubId)) assert = false;
+			if (!(teamModel.Id > 50 & teamModel.Id < 1000)) assert = false;
+			Assert.True(assert);
+		}
+
+		[Test]
+		public void CreateTeamTestError()
+		{
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+			string name = "";
+			int clubId = 20;
+			int length = 256;
+			for (int i = 0; i < length; i++) name += "a";
+			ArgumentException exception = new ArgumentException();
+			try
+			{
+				clubModel.CreateTeam(name, clubId);
+			}
+			catch (ArgumentException caughtException)
+			{
+				exception = caughtException;
+			}
+			finally
+			{
+				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
+				Assert.True(exception.Message == expectedException.Message);
+			}
+		}
+
+		[Test]
+		public void CreatePlayerTest()
+		{
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
+			string name = "team da";
+			int teamId = 20;
+			PlayerModel playerModel = teamModel.CreatePlayer(name, teamId);
+			bool assert = true;
+			if (!(playerModel.Name == name)) assert = false;
+			if (!(playerModel.TeamId == teamId)) assert = false;
+			if (!(playerModel.Id > 50 & playerModel.Id < 1000)) assert = false;
+			Assert.True(assert);
+		}
+
+		[Test]
+		public void CreatePlayerTestError()
+		{
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
+			string name = "";
+			int clubId = 20;
+			int length = 256;
+			for (int i = 0; i < length; i++) name += "a";
+			ArgumentException exception = new ArgumentException();
+			try
+			{
+				teamModel.CreatePlayer(name, clubId);
+			}
+			catch (ArgumentException caughtException)
+			{
+				exception = caughtException;
+			}
+			finally
+			{
+				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
+				Assert.True(exception.Message == expectedException.Message);
+			}
+		}
+
+		[Test]
+		public void ClubSetName()
+		{
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+			string newName = "adaba";
+			clubModel.SetName(newName);
+			Assert.True(newName == clubModel.Name);
+		}
+
+		[Test]
+		public void ClubSetNameError()
+		{
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+			string newName = "";
+			int length = 256;
+			for (int i = 0; i < length; i++) newName += "a";
+			ArgumentException exception = new ArgumentException();
+			try
+			{
+				clubModel.SetName(newName);
+			}
+			catch (ArgumentException caughtException)
+			{
+				exception = caughtException;
+			}
+			finally
+			{
+				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
+				Assert.True(exception.Message == expectedException.Message);
+			}
+		}
+
+		[Test]
+		public void TeamSetName()
+		{
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
+			string newName = "batad";
+			teamModel.SetName(newName);
+			Assert.True(newName == teamModel.Name);
+		}
+
+		[Test]
+		public void TeamSetNameError()
+		{
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
+			string newName = "";
+			int length = 256;
+			for (int i = 0; i < length; i++) newName += "a";
+			ArgumentException exception = new ArgumentException();
+			try
+			{
+				teamModel.SetName(newName);
+			}
+			catch (ArgumentException caughtException)
+			{
+				exception = caughtException;
+			}
+			finally
+			{
+				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
+				Assert.True(exception.Message == expectedException.Message);
+			}
+		}
+
+		[Test]
+		public void PlayerSetName()
+		{
+			string connectionString = "FakeDBConnString";
+			PlayerModel playerModel = new PlayerModel(new PlayerDummyRepository(connectionString), 20, 20, "player da");
+			string newName = "yor";
+			playerModel.SetName(newName);
+			Assert.True(newName == playerModel.Name);
+		}
+
+		[Test]
+		public void PlayerSetNameError()
+		{
+			string connectionString = "FakeDBConnString";
+			PlayerModel playerModel = new PlayerModel(new PlayerDummyRepository(connectionString), 20, 20, "player da");
+			string newName = "";
+			int length = 256;
+			for (int i = 0; i < length; i++) newName += "a";
+			ArgumentException exception = new ArgumentException();
+			try
+			{
+				playerModel.SetName(newName);
+			}
+			catch (ArgumentException caughtException)
+			{
+				exception = caughtException;
+			}
+			finally
+			{
+				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
+				Assert.True(exception.Message == expectedException.Message);
 			}
 		}
 	}

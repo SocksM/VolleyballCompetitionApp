@@ -22,7 +22,7 @@ namespace VolleyballCompetitionApp.Business
 			// check if parameters are valid
 			if (!CheckIfNameValid(name))
 			{
-				throw new ArgumentException($"Name can't be longer than 255.  Name Currently is currently {name.Length} long.");
+				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {name.Length} long.");
 			}
 
 			// database data uploading
