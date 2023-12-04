@@ -1,0 +1,12 @@
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.AssemblyInfoInputs.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.AssemblyInfo.cs
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.csproj.CoreCompileInputs.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.sourcelink.json
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\bin\Debug\net7.0\VolleyballCompetitionApp.Business.deps.json
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\bin\Debug\net7.0\VolleyballCompetitionApp.Business.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\bin\Debug\net7.0\VolleyballCompetitionApp.Business.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\refint\VolleyballCompetitionApp.Business.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\ref\VolleyballCompetitionApp.Business.dll

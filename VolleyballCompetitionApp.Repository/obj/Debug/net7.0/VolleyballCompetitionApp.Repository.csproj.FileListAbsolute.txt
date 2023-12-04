@@ -1,0 +1,16 @@
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.csproj.AssemblyReference.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.AssemblyInfoInputs.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.AssemblyInfo.cs
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.csproj.CoreCompileInputs.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.sourcelink.json
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\bin\Debug\net7.0\VolleyballCompetitionApp.Repository.deps.json
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\bin\Debug\net7.0\VolleyballCompetitionApp.Repository.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\bin\Debug\net7.0\VolleyballCompetitionApp.Repository.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\bin\Debug\net7.0\VolleyballCompetitionApp.Business.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\bin\Debug\net7.0\VolleyballCompetitionApp.Business.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.csproj.CopyComplete
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\refint\VolleyballCompetitionApp.Repository.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\VolleyballCompetitionApp.Repository.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Repository\obj\Debug\net7.0\ref\VolleyballCompetitionApp.Repository.dll

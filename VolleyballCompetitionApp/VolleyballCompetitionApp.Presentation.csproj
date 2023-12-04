@@ -6,4 +6,9 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\VolleyballCompetitionApp.Business\VolleyballCompetitionApp.Business.csproj" />
+    <ProjectReference Include="..\VolleyballCompetitionApp.Repository\VolleyballCompetitionApp.Repository.csproj" />
+  </ItemGroup>
+
 </Project>

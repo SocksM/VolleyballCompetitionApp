@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nieks\\source\\repos\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj",
+      "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj",
       "projectName": "VolleyballCompetitionApp.Business",
-      "projectPath": "C:\\Users\\nieks\\source\\repos\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj",
+      "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj",
       "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nieks\\source\\repos\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\obj\\",
+      "outputPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\nieks\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -61,7 +61,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.203\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100\\RuntimeIdentifierGraph.json"
       }
     }
   }
