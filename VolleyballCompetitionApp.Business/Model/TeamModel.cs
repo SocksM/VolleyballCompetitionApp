@@ -1,4 +1,5 @@
-﻿using VolleyballCompetitionApp.Business.RepositoryInterfaces;
+﻿using VolleyballCompetitionApp.Business.DTOs;
+using VolleyballCompetitionApp.Business.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business.Models
 {
@@ -18,6 +19,24 @@ namespace VolleyballCompetitionApp.Business.Models
 			Id = id;
 			ClubId = clubId;
 			Name = name;
+		}
+
+		public List<PlayerModel> FindPlayerByTeamId(int TeamId = -1)
+		{
+			if (TeamId == -1) TeamId = Id;
+			List<PlayerModel> playerModels = new List<PlayerModel>();
+			List<PlayerDTO> playerDTOs = _playerRepository.FindByTeamId(TeamId);
+			foreach (PlayerDTO dto in playerDTOs)
+			{
+				playerModels.Add(new PlayerModel(_playerRepository, dto.Id, TeamId, dto.Name));
+			}
+			return playerModels;
+		}
+
+		public PlayerModel FindPlayerById(int id)
+		{
+			PlayerDTO dto = _playerRepository.FindById(id);
+			return new PlayerModel(_playerRepository, dto.Id, dto.TeamId, dto.Name);
 		}
 
 		public void SetName(string newName) // changes the name in the class and in the database

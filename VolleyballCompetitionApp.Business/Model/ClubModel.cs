@@ -21,6 +21,24 @@ namespace VolleyballCompetitionApp.Business.Models
 			Name = name;
 		}
 
+		public List<TeamModel> FindTeamByClubId(int clubId = -1)
+		{
+			if (clubId == -1) clubId = Id;
+			List<TeamModel> teamModels = new List<TeamModel>();
+			List<TeamDTO> teamDTOs = _teamRepository.FindByClubId(clubId);
+			foreach (TeamDTO dto in teamDTOs)
+			{
+				teamModels.Add(new TeamModel(_teamRepository, _playerRepository, dto.Id, clubId, dto.Name));
+			}
+			return teamModels;
+		}
+
+		public TeamModel FindTeamById(int id)
+		{
+			TeamDTO dto = _teamRepository.FindById(id);
+			return new TeamModel(_teamRepository, _playerRepository, dto.Id, dto.ClubId, dto.Name);
+		}
+
 		public void SetName(string newName) // changes the name in the class and in the database
 		{
 			// check if parameters are valid

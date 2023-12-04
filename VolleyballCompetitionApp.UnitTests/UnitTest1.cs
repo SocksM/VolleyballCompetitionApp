@@ -1,6 +1,8 @@
 using System;
 using System.Xml.Linq;
+using System.Xml.Serialization;
 using VolleyballCompetitionApp.Business;
+using VolleyballCompetitionApp.Business.DTOs;
 using VolleyballCompetitionApp.Business.Models;
 using VolleyballCompetitionApp.UnitTests.DummyRepos;
 
@@ -179,7 +181,7 @@ namespace VolleyballCompetitionApp.UnitTests
 		}
 
 		[Test]
-		public void ClubSetName()
+		public void ClubSetNameTest()
 		{
 			string connectionString = "FakeDBConnString";
 			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
@@ -189,7 +191,7 @@ namespace VolleyballCompetitionApp.UnitTests
 		}
 
 		[Test]
-		public void ClubSetNameError()
+		public void ClubSetNameTestError()
 		{
 			string connectionString = "FakeDBConnString";
 			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
@@ -213,7 +215,7 @@ namespace VolleyballCompetitionApp.UnitTests
 		}
 
 		[Test]
-		public void TeamSetName()
+		public void TeamSetNameTest()
 		{
 			string connectionString = "FakeDBConnString";
 			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
@@ -247,7 +249,7 @@ namespace VolleyballCompetitionApp.UnitTests
 		}
 
 		[Test]
-		public void PlayerSetName()
+		public void PlayerSetNameTest()
 		{
 			string connectionString = "FakeDBConnString";
 			PlayerModel playerModel = new PlayerModel(new PlayerDummyRepository(connectionString), 20, 20, "player da");
@@ -257,7 +259,7 @@ namespace VolleyballCompetitionApp.UnitTests
 		}
 
 		[Test]
-		public void PlayerSetNameError()
+		public void PlayerSetNameTestError()
 		{
 			string connectionString = "FakeDBConnString";
 			PlayerModel playerModel = new PlayerModel(new PlayerDummyRepository(connectionString), 20, 20, "player da");
@@ -278,6 +280,98 @@ namespace VolleyballCompetitionApp.UnitTests
 				ArgumentException expectedException = new ArgumentException($"Name can't be longer than 255. Name Currently is currently {length} long.");
 				Assert.True(exception.Message == expectedException.Message);
 			}
+		}
+
+		[Test]
+		public void FindClubByIDTest()
+		{
+			ClubDTO expectedDTO = new ClubDTO() { Id = 1, Name = "club 1!" };
+			string connectionString = "FakeDBConnString";
+			ClubCollection clubCollection = new ClubCollection(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString));
+			ClubModel model = clubCollection.FindClubById(1);
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
+		}
+
+		[Test]
+		public void GetAllClubsTest()
+		{
+			string connectionString = "FakeDBConnString";
+			List<ClubDTO> expectedDTOs = [
+				new ClubDTO() { Id = 1, Name = "club 1!" },
+				new ClubDTO() { Id = 2, Name = "2 club?" }
+			];
+			ClubCollection clubCollection = new ClubCollection(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString));
+			List<ClubModel> models = clubCollection.GetAllClubs();
+			bool allTrueThusFar = true;
+			for (int i = 0; i < expectedDTOs.Count; i++)
+			{
+				if (!(expectedDTOs[i].Id == models[i].Id && expectedDTOs[i].Name == models[i].Name))
+				{
+					allTrueThusFar = false; 
+					break;
+				}
+			}
+			Assert.True(allTrueThusFar);
+		}
+
+		[Test]
+		public void FindTeamByClubIdTest()
+		{
+			TeamDTO expectedDTO = new TeamDTO { Id = 1, ClubId = 1, Name = "tem 1" };
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+			TeamModel model = clubModel.FindTeamByClubId(1)[0];
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
+		}
+
+		[Test]
+		public void FindTeamByClubIdUsingDefaultValueTest()
+		{
+			TeamDTO expectedDTO = new TeamDTO { Id = 1, ClubId = 1, Name = "tem 1" };
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, "club 1!");
+			TeamModel model = clubModel.FindTeamByClubId()[0];
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
+		}
+
+		[Test]
+		public void FindTeamByIdTest()
+		{
+			TeamDTO expectedDTO = new TeamDTO { Id = 1, ClubId = 1, Name = "tem 1" };
+			string connectionString = "FakeDBConnString";
+			ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+			TeamModel model = clubModel.FindTeamById(1);
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
+		}
+
+		[Test]
+		public void FindPlayerByTeamIdTest()
+		{
+			PlayerDTO expectedDTO = new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" };
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, 1, "club da");
+			PlayerModel model = teamModel.FindPlayerByTeamId(1)[0];
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
+		}
+
+		[Test]
+		public void FindPlayerByTeamIdUsingDefaultValueTest()
+		{
+			PlayerDTO expectedDTO = new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" };
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, 1, "club da");
+			PlayerModel model = teamModel.FindPlayerByTeamId()[0];
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
+		}
+
+		[Test]
+		public void FindPlayerByIdTest()
+		{
+			PlayerDTO expectedDTO = new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" };
+			string connectionString = "FakeDBConnString";
+			TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, 1, "club da");
+			PlayerModel model = teamModel.FindPlayerById(1);
+			Assert.True(model.Name == expectedDTO.Name && model.Id == expectedDTO.Id);
 		}
 	}
 }

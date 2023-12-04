@@ -11,6 +11,7 @@ namespace VolleyballCompetitionApp.Business.RepositoryInterfaces
 	{
 		public int Create(string name);
 		public ClubDTO FindById(int id);
+		public List<ClubDTO> GetAllClubs();
 		public void Update(int id, string name);
 		public void Delete(int id);
 	}

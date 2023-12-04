@@ -10,6 +10,11 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 {
 	public class ClubDummyRepository : IClubRepository
 	{
+		private readonly List<ClubDTO> _dummyDTOs = [
+			new ClubDTO { Id = 1, Name = "club 1!" }, 
+			new ClubDTO { Id = 2, Name = "2 club?" }
+			];
+
 		public ClubDummyRepository(string dummyConnectionString) => Console.WriteLine($"Created a club dummy repo with the connection string: \"{dummyConnectionString}\"");
 
 		public int Create(string name)
@@ -25,16 +30,17 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 
 		public ClubDTO FindById(int id)
 		{
-			switch (id)
+			foreach (ClubDTO dto in _dummyDTOs)
 			{
-				case 1:
-					return new ClubDTO { Id = id, Name = "club 1!" };
-				case 2:
-					return new ClubDTO { Id = id, Name = "2 club?" };
-				default:
-					throw new Exception("Not a valid id passed to the dummy club repository.");
+				if (dto.Id == id)
+				{
+					return dto;
+				}
 			}
+			throw new Exception("Not a valid id passed to the dummy club repository.");
 		}
+
+		public List<ClubDTO> GetAllClubs() => _dummyDTOs;
 
 		public void Update(int id, string name)
 		{

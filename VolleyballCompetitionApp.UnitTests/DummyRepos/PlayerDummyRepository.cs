@@ -10,6 +10,11 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 {
 	public class PlayerDummyRepository : IPlayerRepository
 	{
+		private readonly List<PlayerDTO> _dummyDTOs = [
+			new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" },
+			new PlayerDTO { Id = 2, TeamId = 2, Name = "2 Plaaayer" }
+			];
+
 		public PlayerDummyRepository(string dummyConnectionString) => Console.WriteLine($"Created a player dummy repo with the connection string: \"{dummyConnectionString}\"");
 
 		public int Create(int teamId, string name)
@@ -25,30 +30,31 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 
 		public PlayerDTO FindById(int id)
 		{
-			switch (id)
+			foreach (PlayerDTO dto in _dummyDTOs)
 			{
-				case 1:
-					return new PlayerDTO { Id = id, TeamId = 1, Name = "Player 1!!" };
-				case 2:
-					return new PlayerDTO { Id = id, TeamId = 2, Name = "2 Plaaayer" };
-				default:
-					throw new Exception("Not a valid id passed to the dummy player repository.");
+				if (dto.Id == id)
+				{
+					return dto;
+				}
 			}
+			throw new Exception("Not a valid id passed to the dummy Player repository.");
 		}
 
 		public List<PlayerDTO> FindByTeamId(int teamId)
 		{
-			switch (teamId)
+			List<PlayerDTO> output = new List<PlayerDTO>();
+			foreach (PlayerDTO dto in _dummyDTOs)
 			{
-				case 1:
-					List<PlayerDTO> output1 = [new PlayerDTO { Id = 1, TeamId = teamId, Name = "Player 1!!" }];
-					return output1;
-				case 2:
-					List<PlayerDTO> output2 = [new PlayerDTO { Id = 2, TeamId = teamId, Name = "2 Plaaayer" }];
-					return output2;
-				default:
-					throw new Exception("Not a valid id passed to the dummy player repository.");
+				if (dto.TeamId == teamId)
+				{
+					output.Add(dto);
+				}
 			}
+			if (output.Count > 0)
+			{
+				return output;
+			}
+			throw new Exception("Not a valid id passed to the dummy Player repository.");
 		}
 
 		public void Update(int id, int teamId, string name)

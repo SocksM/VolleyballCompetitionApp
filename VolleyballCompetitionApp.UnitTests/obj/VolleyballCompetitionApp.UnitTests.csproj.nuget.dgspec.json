@@ -234,7 +234,14 @@
         "frameworks": {
           "net7.0": {
             "targetAlias": "net7.0",
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
+              },
+              "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Repository\\VolleyballCompetitionApp.Repository.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

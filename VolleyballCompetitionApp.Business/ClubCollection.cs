@@ -17,6 +17,22 @@ namespace VolleyballCompetitionApp.Business
 			_playerRepository = playerRepository;
 		}
 
+		public ClubModel FindClubById (int id)
+		{
+			return new ClubModel(_clubRepository, _teamRepository, _playerRepository, id, _clubRepository.FindById(id).Name);
+		}
+
+		public List<ClubModel> GetAllClubs()
+		{
+			List<ClubModel> clubModels = new List<ClubModel>();
+			List<ClubDTO> clubDTOs = _clubRepository.GetAllClubs();
+			foreach (ClubDTO dto in clubDTOs)
+			{
+				clubModels.Add(new ClubModel(_clubRepository, _teamRepository, _playerRepository, dto.Id, dto.Name));
+			}
+			return clubModels;
+		}
+
 		public ClubModel CreateClub(string name) // ipv van void clubmodle voor testing
 		{
 			// check if parameters are valid

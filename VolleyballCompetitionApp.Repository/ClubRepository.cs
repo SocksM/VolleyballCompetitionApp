@@ -17,7 +17,7 @@ namespace VolleyballCompetitionApp.Repository
 			string query = "" +
 				"Insert Club " +
 				"Output Inserted.ID" +
-				"Values (@name); ";
+				"Values (@name)";
 			SqlCommand command = new SqlCommand(query, connection);
 			command.Parameters.AddWithValue("name", name);
 			connection.Open();
@@ -27,7 +27,7 @@ namespace VolleyballCompetitionApp.Repository
 			return id;
 		}
 
-		#region Find Methods
+		#region Get Methods
 		public ClubDTO FindById(int id) // gets data from the database depending on the id
 		{
 			// database connection and data fetching
@@ -50,6 +50,31 @@ namespace VolleyballCompetitionApp.Repository
 
 			// no error's? return filled dto.
 			return dto;
+		}
+
+		public List<ClubDTO> GetAllClubs()
+		{
+			// database connection and data fetching
+			SqlConnection connection = new SqlConnection(_connectionString);
+			string query = "" +
+				"select ID, Name " +
+				"From Club ";
+			SqlCommand command = new SqlCommand(query, connection);
+			connection.Open();
+			SqlDataReader reader = command.ExecuteReader();
+			List<ClubDTO> output = new List<ClubDTO>();
+			while (reader.Read())
+			{
+				output.Add(new ClubDTO()
+				{
+					Name = reader["Name"].ToString(),
+					Id = int.Parse(reader["Id"].ToString())
+				});
+			}
+			connection.Close();
+
+			// no error's? return filled dto.
+			return output;
 		}
 
 		#endregion
