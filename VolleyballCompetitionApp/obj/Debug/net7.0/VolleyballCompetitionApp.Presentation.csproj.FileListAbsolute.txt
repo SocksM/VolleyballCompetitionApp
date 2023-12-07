@@ -29,3 +29,15 @@ C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\ref
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\VolleyballCompetitionApp.Presentation.pdb
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\VolleyballCompetitionApp.Presentation.genruntimeconfig.cache
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\ref\VolleyballCompetitionApp.Presentation.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\System.Data.SqlClient.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\runtimes\win-arm64\native\sni.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\runtimes\win-x64\native\sni.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\runtimes\win-x86\native\sni.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\runtimes\unix\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\runtimes\win\lib\netcoreapp2.1\System.Data.SqlClient.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Business.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Repository.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Business.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Repository.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\VolleyballCompetitionApp.Presentation.csproj.AssemblyReference.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\VolleyballCompetitionApp.Presentation.csproj.CopyComplete

@@ -521,6 +521,9 @@
       "VolleyballCompetitionApp.Business/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v7.0",
+        "dependencies": {
+          "VolleyballCompetitionApp.Tools": "1.0.0"
+        },
         "compile": {
           "bin/placeholder/VolleyballCompetitionApp.Business.dll": {}
         },
@@ -533,7 +536,8 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "VolleyballCompetitionApp.Business": "1.0.0",
-          "VolleyballCompetitionApp.Repository": "1.0.0"
+          "VolleyballCompetitionApp.Repository": "1.0.0",
+          "VolleyballCompetitionApp.Tools": "1.0.0"
         },
         "compile": {
           "bin/placeholder/VolleyballCompetitionApp.Presentation.dll": {}
@@ -550,13 +554,24 @@
         "framework": ".NETCoreApp,Version=v7.0",
         "dependencies": {
           "System.Data.SqlClient": "4.8.5",
-          "VolleyballCompetitionApp.Business": "1.0.0"
+          "VolleyballCompetitionApp.Business": "1.0.0",
+          "VolleyballCompetitionApp.Tools": "1.0.0"
         },
         "compile": {
           "bin/placeholder/VolleyballCompetitionApp.Repository.dll": {}
         },
         "runtime": {
           "bin/placeholder/VolleyballCompetitionApp.Repository.dll": {}
+        }
+      },
+      "VolleyballCompetitionApp.Tools/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/VolleyballCompetitionApp.Tools.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VolleyballCompetitionApp.Tools.dll": {}
         }
       }
     }
@@ -1464,6 +1479,11 @@
       "type": "project",
       "path": "../VolleyballCompetitionApp.Repository/VolleyballCompetitionApp.Repository.csproj",
       "msbuildProject": "../VolleyballCompetitionApp.Repository/VolleyballCompetitionApp.Repository.csproj"
+    },
+    "VolleyballCompetitionApp.Tools/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces/VolleyballCompetitionApp.Tools.csproj",
+      "msbuildProject": "../Interfaces/VolleyballCompetitionApp.Tools.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -1475,6 +1495,7 @@
       "VolleyballCompetitionApp.Business >= 1.0.0",
       "VolleyballCompetitionApp.Presentation >= 1.0.0",
       "VolleyballCompetitionApp.Repository >= 1.0.0",
+      "VolleyballCompetitionApp.Tools >= 1.0.0",
       "coverlet.collector >= 6.0.0"
     ]
   },
@@ -1505,6 +1526,9 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
+            "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj": {
+              "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj"
+            },
             "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
               "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
             },

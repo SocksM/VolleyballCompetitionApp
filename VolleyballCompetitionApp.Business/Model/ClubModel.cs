@@ -39,6 +39,8 @@ namespace VolleyballCompetitionApp.Business.Models
 			return new TeamModel(_teamRepository, _playerRepository, dto.Id, dto.ClubId, dto.Name);
 		}
 
+
+
 		public void SetName(string newName) // changes the name in the class and in the database
 		{
 			// check if parameters are valid
