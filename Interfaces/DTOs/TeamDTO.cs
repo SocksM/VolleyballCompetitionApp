@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VolleyballCompetitionApp.Tools.DTOs
+namespace VolleyballCompetitionApp.Interfaces.DTOs
 {
 	public class TeamDTO
 	{

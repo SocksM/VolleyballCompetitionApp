@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("VolleyballCompetitionApp.Tools")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+19e74926d9d08ccfafe2651a5539b7e03be508da")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
 [assembly: System.Reflection.AssemblyProductAttribute("VolleyballCompetitionApp.Tools")]
 [assembly: System.Reflection.AssemblyTitleAttribute("VolleyballCompetitionApp.Tools")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

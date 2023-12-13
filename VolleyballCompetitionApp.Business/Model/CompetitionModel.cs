@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VolleyballCompetitionApp.Business.DTOs;
+using VolleyballCompetitionApp.Interfaces.DTOs;
 
 namespace VolleyballCompetitionApp.Business.Models
 {

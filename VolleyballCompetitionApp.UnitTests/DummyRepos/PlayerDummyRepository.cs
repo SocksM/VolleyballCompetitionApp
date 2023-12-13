@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VolleyballCompetitionApp.Business.DTOs;
-using VolleyballCompetitionApp.Business.RepositoryInterfaces;
+using VolleyballCompetitionApp.Interfaces.DTOs;
+using VolleyballCompetitionApp.Interfaces.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 {
@@ -14,17 +14,28 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 			new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" },
 			new PlayerDTO { Id = 2, TeamId = 2, Name = "2 Plaaayer" }
 			];
+		public List<PlayerDTO> Creates { get; private set; } = new List<PlayerDTO>();
+		public List<PlayerDTO> Updates { get; private set; } = new List<PlayerDTO>();
+        public List<int> Deletes { get; private set; } = new List<int>();
 
-		public PlayerDummyRepository(string dummyConnectionString) => Console.WriteLine($"Created a player dummy repo with the connection string: \"{dummyConnectionString}\"");
+
+        public PlayerDummyRepository(string dummyConnectionString) => Console.WriteLine($"Created a player dummy repo with the connection string: \"{dummyConnectionString}\"");
 
 		public int Create(int teamId, string name)
 		{
 			Random random = new Random();
-			return random.Next(50, 1000);
+			int randomNum = random.Next(50, 1000);
+			Creates.Add( new PlayerDTO {
+				Id = randomNum, 
+				TeamId = teamId,
+				Name = name
+			});
+			return randomNum;
 		}
 
 		public void Delete(int id)
 		{
+			Deletes.Add(id);
 			Console.WriteLine($"Deleted PlayerId: {id}");
 		}
 
@@ -57,8 +68,14 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 			throw new Exception("Not a valid id passed to the dummy Player repository.");
 		}
 
-		public void Update(int id, int teamId, string name)
+        public void Update(int id, int teamId, string name)
 		{
+			Updates.Add(new PlayerDTO
+			{
+				Id = id,
+				TeamId = teamId,
+				Name = name
+			});
 			Console.WriteLine($"Updated PlayerId \"{id}\" to:");
 			Console.WriteLine($"  Team ID = \"{teamId}\"");
 			Console.WriteLine($"  Name = \"{name}\"");

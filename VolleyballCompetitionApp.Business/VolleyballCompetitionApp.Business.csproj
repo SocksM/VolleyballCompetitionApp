@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Interfaces\VolleyballCompetitionApp.Tools.csproj" />
+    <ProjectReference Include="..\Interfaces\VolleyballCompetitionApp.Interfaces.csproj" />
   </ItemGroup>
 
 </Project>

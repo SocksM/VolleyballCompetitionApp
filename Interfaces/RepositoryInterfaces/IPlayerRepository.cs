@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using VolleyballCompetitionApp.Tools.DTOs;
+using VolleyballCompetitionApp.Interfaces.DTOs;
 
-namespace VolleyballCompetitionApp.Tools.RepositoryInterfaces
+namespace VolleyballCompetitionApp.Interfaces.RepositoryInterfaces
 {
 	public interface IPlayerRepository
 	{

@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
-using VolleyballCompetitionApp.Business.RepositoryInterfaces;
-using VolleyballCompetitionApp.Business.DTOs;
+using VolleyballCompetitionApp.Interfaces.RepositoryInterfaces;
+using VolleyballCompetitionApp.Interfaces.DTOs;
 
 namespace VolleyballCompetitionApp.Repository
 {

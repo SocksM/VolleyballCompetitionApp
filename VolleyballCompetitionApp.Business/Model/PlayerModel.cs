@@ -1,5 +1,5 @@
 ﻿using System.Xml.Linq;
-using VolleyballCompetitionApp.Business.RepositoryInterfaces;
+using VolleyballCompetitionApp.Interfaces.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business.Models
 {

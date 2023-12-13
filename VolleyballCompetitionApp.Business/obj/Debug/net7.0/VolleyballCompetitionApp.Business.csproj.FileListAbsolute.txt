@@ -10,3 +10,7 @@ C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\n
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\refint\VolleyballCompetitionApp.Business.dll
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.pdb
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\ref\VolleyballCompetitionApp.Business.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.csproj.AssemblyReference.cache
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.pdb
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.Business\obj\Debug\net7.0\VolleyballCompetitionApp.Business.csproj.CopyComplete

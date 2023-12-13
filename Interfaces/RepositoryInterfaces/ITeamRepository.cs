@@ -1,6 +1,6 @@
-﻿using VolleyballCompetitionApp.Tools.DTOs;
+﻿using VolleyballCompetitionApp.Interfaces.DTOs;
 
-namespace VolleyballCompetitionApp.Tools.RepositoryInterfaces
+namespace VolleyballCompetitionApp.Interfaces.RepositoryInterfaces
 {
 	public interface ITeamRepository
 	{

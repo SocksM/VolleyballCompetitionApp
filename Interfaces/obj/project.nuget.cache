@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "N44eCKVfCGrvHVOofVjCWOyAM21ckHVciBz4UvBxs11EATr7ZEjT4dLHOyasEU3szsdHDColGFh+SRmDGf47QQ==",
+  "dgSpecHash": "uopUkS+D4zgUA4W6+ZGh55xcxj+KV3Z5aCqnLGfkndfZUO5RGbjRNUKTC025Y17bpMNVpEDpSHVbSOabdLPGFw==",
   "success": true,
-  "projectFilePath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj",
+  "projectFilePath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

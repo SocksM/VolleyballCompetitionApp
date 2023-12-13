@@ -1,5 +1,5 @@
-﻿using VolleyballCompetitionApp.Business.DTOs;
-using VolleyballCompetitionApp.Business.RepositoryInterfaces;
+﻿using VolleyballCompetitionApp.Interfaces.DTOs;
+using VolleyballCompetitionApp.Interfaces.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business.Models
 {

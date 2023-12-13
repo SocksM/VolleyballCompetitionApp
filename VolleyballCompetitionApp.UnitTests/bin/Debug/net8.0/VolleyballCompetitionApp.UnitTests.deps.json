@@ -13,6 +13,7 @@
           "NUnit.Analyzers": "3.6.1",
           "NUnit3TestAdapter": "4.2.1",
           "VolleyballCompetitionApp.Business": "1.0.0",
+          "VolleyballCompetitionApp.Interfaces": "1.0.0",
           "VolleyballCompetitionApp.Presentation": "1.0.0",
           "VolleyballCompetitionApp.Repository": "1.0.0",
           "coverlet.collector": "6.0.0"
@@ -394,13 +395,22 @@
       },
       "System.Security.Principal.Windows/4.7.0": {},
       "VolleyballCompetitionApp.Business/1.0.0": {
+        "dependencies": {
+          "VolleyballCompetitionApp.Interfaces": "1.0.0"
+        },
         "runtime": {
           "VolleyballCompetitionApp.Business.dll": {}
+        }
+      },
+      "VolleyballCompetitionApp.Interfaces/1.0.0": {
+        "runtime": {
+          "VolleyballCompetitionApp.Interfaces.dll": {}
         }
       },
       "VolleyballCompetitionApp.Presentation/1.0.0": {
         "dependencies": {
           "VolleyballCompetitionApp.Business": "1.0.0",
+          "VolleyballCompetitionApp.Interfaces": "1.0.0",
           "VolleyballCompetitionApp.Repository": "1.0.0"
         },
         "runtime": {
@@ -410,7 +420,8 @@
       "VolleyballCompetitionApp.Repository/1.0.0": {
         "dependencies": {
           "System.Data.SqlClient": "4.8.5",
-          "VolleyballCompetitionApp.Business": "1.0.0"
+          "VolleyballCompetitionApp.Business": "1.0.0",
+          "VolleyballCompetitionApp.Interfaces": "1.0.0"
         },
         "runtime": {
           "VolleyballCompetitionApp.Repository.dll": {}
@@ -572,6 +583,11 @@
       "hashPath": "system.security.principal.windows.4.7.0.nupkg.sha512"
     },
     "VolleyballCompetitionApp.Business/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "VolleyballCompetitionApp.Interfaces/1.0.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolleyballCompetitionApp.Re
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolleyballCompetitionApp.UnitTests", "VolleyballCompetitionApp.UnitTests\VolleyballCompetitionApp.UnitTests.csproj", "{ABC7309B-5D14-45D4-A840-9CD227123F66}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VolleyballCompetitionApp.Tools", "Interfaces\VolleyballCompetitionApp.Tools.csproj", "{8AC47236-B384-4D66-94FD-4B3787169C32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VolleyballCompetitionApp.Interfaces", "Interfaces\VolleyballCompetitionApp.Interfaces.csproj", "{8AC47236-B384-4D66-94FD-4B3787169C32}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

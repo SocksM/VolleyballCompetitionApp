@@ -13,9 +13,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj",
-      "projectName": "VolleyballCompetitionApp.Tools",
-      "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj",
+      "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj",
+      "projectName": "VolleyballCompetitionApp.Interfaces",
+      "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj",
       "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
       "outputPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\obj\\",
       "projectStyle": "PackageReference",

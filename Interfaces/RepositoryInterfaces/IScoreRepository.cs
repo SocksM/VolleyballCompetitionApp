@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace VolleyballCompetitionApp.Tools.RepositoryInterfaces
+namespace VolleyballCompetitionApp.Interfaces.RepositoryInterfaces
 {
 	public interface IScoreRepository
 	{

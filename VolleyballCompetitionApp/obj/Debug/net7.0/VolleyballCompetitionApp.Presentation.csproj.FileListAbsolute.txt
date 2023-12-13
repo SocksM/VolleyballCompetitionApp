@@ -41,3 +41,5 @@ C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\Vol
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Repository.pdb
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\VolleyballCompetitionApp.Presentation.csproj.AssemblyReference.cache
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\obj\Debug\net7.0\VolleyballCompetitionApp.Presentation.csproj.CopyComplete
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.pdb

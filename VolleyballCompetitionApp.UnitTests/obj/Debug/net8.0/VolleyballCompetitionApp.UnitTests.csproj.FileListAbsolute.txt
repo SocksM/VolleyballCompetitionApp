@@ -117,3 +117,5 @@ C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.UnitTests\obj\Debug\
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.UnitTests\obj\Debug\net8.0\VolleyballCompetitionApp.UnitTests.pdb
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.UnitTests\obj\Debug\net8.0\VolleyballCompetitionApp.UnitTests.genruntimeconfig.cache
 C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.UnitTests\obj\Debug\net8.0\ref\VolleyballCompetitionApp.UnitTests.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.UnitTests\bin\Debug\net8.0\VolleyballCompetitionApp.Interfaces.dll
+C:\Github\VolleyballCompetitionApp\VolleyballCompetitionApp.UnitTests\bin\Debug\net8.0\VolleyballCompetitionApp.Interfaces.pdb

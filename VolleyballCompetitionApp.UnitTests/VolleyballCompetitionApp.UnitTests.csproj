@@ -18,7 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Interfaces\VolleyballCompetitionApp.Tools.csproj" />
+    <ProjectReference Include="..\Interfaces\VolleyballCompetitionApp.Interfaces.csproj" />
     <ProjectReference Include="..\VolleyballCompetitionApp.Business\VolleyballCompetitionApp.Business.csproj" />
     <ProjectReference Include="..\VolleyballCompetitionApp.Repository\VolleyballCompetitionApp.Repository.csproj" />
     <ProjectReference Include="..\VolleyballCompetitionApp\VolleyballCompetitionApp.Presentation.csproj" />

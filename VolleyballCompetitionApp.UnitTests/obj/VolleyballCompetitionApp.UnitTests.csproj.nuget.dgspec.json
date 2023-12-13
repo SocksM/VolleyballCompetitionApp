@@ -4,12 +4,12 @@
     "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj": {}
   },
   "projects": {
-    "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj": {
+    "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj",
-        "projectName": "VolleyballCompetitionApp.Tools",
-        "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj",
+        "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj",
+        "projectName": "VolleyballCompetitionApp.Interfaces",
+        "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj",
         "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
         "outputPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\obj\\",
         "projectStyle": "PackageReference",
@@ -83,8 +83,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj": {
-                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj"
+              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj"
               }
             }
           }
@@ -142,8 +142,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj": {
-                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj"
+              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj"
               },
               "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
                 "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
@@ -210,8 +210,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj": {
-                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj"
+              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj"
               },
               "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
                 "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
@@ -300,8 +300,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj": {
-                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Tools.csproj"
+              "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj": {
+                "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj"
               },
               "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj": {
                 "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.Business\\VolleyballCompetitionApp.Business.csproj"
