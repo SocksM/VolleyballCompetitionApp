@@ -33,5 +33,10 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
             return RedirectToPage("Index");
         }
 
-    }
+		public IActionResult OnCancel()
+		{
+			return RedirectToPage("Index");
+		}
+
+	}
 }

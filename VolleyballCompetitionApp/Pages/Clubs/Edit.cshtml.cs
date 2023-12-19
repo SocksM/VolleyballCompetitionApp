@@ -22,14 +22,17 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
 			club = clubCollection.FindClubById(id);
 		}
 
-		public IActionResult OnPost(int id, string newName, bool editConfirmed)
+		[BindProperty]
+		public string newClubName { get; set; }
+		public IActionResult OnPost(int id)
 		{
-			if (editConfirmed)
-			{
-				club = clubCollection.FindClubById(id);
-				club.SetName(newName);
-			}
+			clubCollection.FindClubById(id).SetName(newClubName);
 			return RedirectToPage("Index");
 		}
-	}
+
+        public IActionResult OnCancel()
+        {
+            return RedirectToPage("Index");
+        }
+    }
 }

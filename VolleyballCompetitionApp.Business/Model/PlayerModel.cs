@@ -33,6 +33,15 @@ namespace VolleyballCompetitionApp.Business.Models
 			Name = newName;
 		}
 
+		public void SetTeamId(int teamId)
+		{
+            // database data uploading
+            _playerRepository.Update(Id, teamId, Name);
+
+            // if no error: change var in class
+            TeamId = teamId;
+		}
+
 		private bool CheckIfNameValid(string name)
 		{
 			// check if parameter is valid

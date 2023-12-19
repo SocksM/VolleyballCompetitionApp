@@ -1,0 +1,27 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Players.CreateModel
+
+<h2>Create Club</h2>
+
+<form method="post">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Team Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> Auto generated Id</td>
+				<td><input type="number" name="teamId"></td>
+				<td><input type="text" name="playerName"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="submit">Create</button>
+</form>
+<form method="cancel">
+	<button type="submit">Cancel</button>
+</form>

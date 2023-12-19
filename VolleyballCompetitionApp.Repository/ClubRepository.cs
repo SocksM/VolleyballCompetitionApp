@@ -36,19 +36,22 @@ namespace VolleyballCompetitionApp.Repository
             // database connection and data fetching
             SqlConnection connection = new SqlConnection(_connectionString);
             string query = "" +
-                "select ID, Name " +
+                "select Name " +
                 "From Club " +
                 "Where ID = @id";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("id", id);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
-            ClubDTO dto = new ClubDTO()
+            ClubDTO dto = null;
+            if (reader.Read())
             {
-                Name = reader["Name"].ToString(),
-                Id = id
-            };
+                dto = new ClubDTO()
+                {
+                    Name = reader["Name"].ToString(),
+                    Id = id
+                };
+            }
             connection.Close();
 
             // no error's? return filled dto.
@@ -61,14 +64,14 @@ namespace VolleyballCompetitionApp.Repository
             SqlConnection connection = new SqlConnection(_connectionString);
             string query = "" +
                 "select ID, Name " +
-                "From Club ";
+                "From Club";
             SqlCommand command = new SqlCommand(query, connection);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            List<ClubDTO> output = new List<ClubDTO>();
+            List<ClubDTO> dtos = new List<ClubDTO>();
             while (reader.Read())
             {
-                output.Add(new ClubDTO()
+                dtos.Add(new ClubDTO()
                 {
                     Name = reader["Name"].ToString(),
                     Id = int.Parse(reader["Id"].ToString())
@@ -77,7 +80,7 @@ namespace VolleyballCompetitionApp.Repository
             connection.Close();
 
             // no error's? return filled dto.
-            return output;
+            return dtos;
         }
 
         #endregion
@@ -92,7 +95,7 @@ namespace VolleyballCompetitionApp.Repository
             SqlConnection connection = new SqlConnection(_connectionString);
             string query = "" +
                 "Update Club " +
-                "Set Name = @name" +
+                "Set Name = @name " +
                 "Where ID = @id";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("name", name);

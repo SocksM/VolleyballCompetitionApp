@@ -18,13 +18,5 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
             clubCollection = new ClubCollection(new ClubRepository(connectionString), new TeamRepository(connectionString), new PlayerRepository(connectionString));
             clubs = clubCollection.GetAllClubs();
         }
-
-        public void OnGet()
-        {
-
-        }
-
-
-
     }
 }

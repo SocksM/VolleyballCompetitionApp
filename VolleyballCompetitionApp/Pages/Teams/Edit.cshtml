@@ -1,0 +1,25 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Teams.EditModel
+
+<h2>Edit Club</h2>
+
+<form method="post">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>@Model.club.Id</td>
+				<td><input type="text" asp-for="newClubName"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="submit" >Edit</button>
+</form>
+<form method="cancel">
+	<button type="submit">Cancel</button>
+</form>

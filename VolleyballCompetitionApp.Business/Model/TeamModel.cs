@@ -32,7 +32,16 @@ namespace VolleyballCompetitionApp.Business.Models
 			Name = newName;
 		}
 
-		private bool CheckIfNameValid(string name)
+        public void SetClubId(int clubId) // changes the name in the class and in the database
+        {
+            // database data uploading
+            _teamRepository.Update(Id, clubId, Name);
+
+            // if no error: change var in class
+            ClubId = clubId;
+        }
+
+        private bool CheckIfNameValid(string name)
 		{
 			// check if parameter is valid
 			if (name.Length > 255)

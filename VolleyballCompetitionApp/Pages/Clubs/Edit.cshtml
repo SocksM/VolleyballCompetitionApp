@@ -14,10 +14,12 @@
 		<tbody>
 			<tr>
 				<td>@Model.club.Id</td>
-				<td><input type="text" name="clubName"></td>
+				<td><input type="text" asp-for="newClubName"></td>
 			</tr>
 		</tbody>
 	</table>
-	<button type="submit" value="True" name="editConfirmed">Edit</button>
-	<button type="submit" value="False" name="editConfirmed">Cancel</button>
+	<button type="submit">Edit</button>
+</form>
+<form method="cancel">
+	<button type="submit">Cancel</button>
 </form>

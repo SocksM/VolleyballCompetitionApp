@@ -12,12 +12,10 @@ namespace VolleyballCompetitionApp.Business
 {
     public class PlayerCollection
     {
-        private readonly ITeamRepository _teamRepository;
         private readonly IPlayerRepository _playerRepository;
 
-        public PlayerCollection(ITeamRepository teamRepository, IPlayerRepository playerRepository, int id, int clubId, string name)
+        public PlayerCollection(IPlayerRepository playerRepository)
         {
-            _teamRepository = teamRepository;
             _playerRepository = playerRepository;
         }
 
@@ -31,11 +29,32 @@ namespace VolleyballCompetitionApp.Business
             }
             return playerModels;
         }
+        public List<PlayerModel> FindPlayerByClubId(int ClubId)
+        {
+            List<PlayerModel> playerModels = new List<PlayerModel>();
+            List<PlayerDTO> playerDTOs = _playerRepository.FindByClubId(ClubId);
+            foreach (PlayerDTO dto in playerDTOs)
+            {
+                playerModels.Add(new PlayerModel(_playerRepository, dto.Id, dto.TeamId, dto.Name));
+            }
+            return playerModels;
+        }
 
         public PlayerModel FindPlayerById(int id)
         {
             PlayerDTO dto = _playerRepository.FindById(id);
             return new PlayerModel(_playerRepository, dto.Id, dto.TeamId, dto.Name);
+        }
+
+        public List<PlayerModel> GetAllPlayers()
+        {
+            List<PlayerModel> playerModels = new List<PlayerModel>();
+            List<PlayerDTO> playerDTOs = _playerRepository.GetAllPlayers();
+            foreach (PlayerDTO dto in playerDTOs)
+            {
+                playerModels.Add(new PlayerModel(_playerRepository, dto.Id, dto.TeamId, dto.Name));
+            }
+            return playerModels;
         }
 
         public PlayerModel CreatePlayer(string name, int teamId) // gets a player from the database to add to the variable

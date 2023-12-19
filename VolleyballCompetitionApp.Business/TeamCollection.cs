@@ -38,6 +38,17 @@ namespace VolleyballCompetitionApp.Business
             return new TeamModel(_teamRepository, dto.Id, dto.ClubId, dto.Name);
         }
 
+        public List<TeamModel> GetAllTeams()
+        {
+            List<TeamModel> teamModels = new List<TeamModel>();
+            List<TeamDTO> teamDTOs = _teamRepository.GetAllTeams();
+            foreach (TeamDTO dto in teamDTOs)
+            {
+                teamModels.Add(new TeamModel(_teamRepository, dto.Id, dto.ClubId, dto.Name));
+            }
+            return teamModels;
+        }
+
         public TeamModel CreateTeam(string name, int clubId)
         {
             // check if parameters are valid
