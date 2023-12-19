@@ -14,5 +14,6 @@ namespace VolleyballCompetitionApp.Interfaces.RepositoryInterfaces
 		public List<PlayerDTO> FindByTeamId(int teamId);
 		public void Update(int id, int teamId, string name);
 		public void Delete(int id);
+		public void DeleteByTeamId(int teamId);
 	}
 }

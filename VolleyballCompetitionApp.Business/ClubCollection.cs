@@ -19,7 +19,7 @@ namespace VolleyballCompetitionApp.Business
 
 		public ClubModel FindClubById (int id)
 		{
-			return new ClubModel(_clubRepository, _teamRepository, _playerRepository, id, _clubRepository.FindById(id).Name);
+			return new ClubModel(_clubRepository, id, _clubRepository.FindById(id).Name);
 		}
 
 		public List<ClubModel> GetAllClubs()
@@ -28,7 +28,7 @@ namespace VolleyballCompetitionApp.Business
 			List<ClubDTO> clubDTOs = _clubRepository.GetAllClubs();
 			foreach (ClubDTO dto in clubDTOs)
 			{
-				clubModels.Add(new ClubModel(_clubRepository, _teamRepository, _playerRepository, dto.Id, dto.Name));
+				clubModels.Add(new ClubModel(_clubRepository, dto.Id, dto.Name));
 			}
 			return clubModels;
 		}
@@ -45,20 +45,15 @@ namespace VolleyballCompetitionApp.Business
 			int id = _clubRepository.Create(name);
 
 			// if no errors change var in class
-			return new ClubModel(_clubRepository, _teamRepository, _playerRepository, id, name); // addclub()
+			return new ClubModel(_clubRepository, id, name); // addclub()
 		}
 
 		public void DeleteClubById(int id)
 		{
+			ClubDTO clubDto = _clubRepository.FindById(id);
 			_clubRepository.Delete(id);
-			foreach (TeamDTO teamDTO in _teamRepository.FindByClubId(id))
-			{
-				foreach (PlayerDTO playerDTO in _playerRepository.FindByTeamId(teamDTO.Id))
-				{
-					_playerRepository.Delete(playerDTO.Id);
-				}
-				_teamRepository.Delete(teamDTO.Id);
-			}
+			TeamCollection teamCollection = new TeamCollection(_teamRepository, _playerRepository);
+			teamCollection.DeleteTeamByClubId(clubDto.Id);
 		}
 
 		private bool CheckIfNameValid(string name)

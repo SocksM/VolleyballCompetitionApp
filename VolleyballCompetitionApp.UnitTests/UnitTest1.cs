@@ -21,13 +21,18 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void DeleteClubTest() // should also test delete team and player check console output if its all there
         {
+            // arange
             string connectionString = "FakeDBConnString";
             ClubDummyRepository clubRepository = new ClubDummyRepository(connectionString);
             TeamDummyRepository teamRepository = new TeamDummyRepository(connectionString);
             PlayerDummyRepository playerRepository = new PlayerDummyRepository(connectionString);
 
             ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
+            
+            // act
             clubCollection.DeleteClubById(1);
+
+            // assert
             List<int> expectedClubDeletes = [1];
             Assert.That(clubRepository.Deletes, Is.EqualTo(expectedClubDeletes));
             List<int> expectedTeamDeletes = [1];

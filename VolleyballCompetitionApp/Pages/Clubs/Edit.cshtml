@@ -1,0 +1,23 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Clubs.EditModel
+
+<h2>Edit Club</h2>
+
+<form method="post">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>@Model.club.Id</td>
+				<td><input type="text" name="clubName"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="submit" value="True" name="editConfirmed">Edit</button>
+	<button type="submit" value="False" name="editConfirmed">Cancel</button>
+</form>

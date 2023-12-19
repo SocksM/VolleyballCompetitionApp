@@ -1,0 +1,11 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Clubs.DeleteModel
+
+<h2>Delete Club</h2>
+
+<form method="post">
+	<label >@Model.club.Name</label>
+	<p>Are you sure you want to delete this club?</p>
+	<button type="submit" value="True" name="deletetionConfirmed">Delete</button>
+	<button type="submit" value="False" name="deletetionConfirmed">Cancel</button>
+</form>
