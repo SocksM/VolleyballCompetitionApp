@@ -3,36 +3,37 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using VolleyballCompetitionApp.Business.Models;
 using VolleyballCompetitionApp.Business;
 using VolleyballCompetitionApp.Repository;
+using Microsoft.AspNetCore.Razor.Language;
 
 namespace VolleyballCompetitionApp.Presentation.Pages.Players
 {
 	public class EditModel : PageModel
 	{
-        private string _connectionString;
-        public PlayerModel players { get; set; }
+        public PlayerCollection playerCollection { get; private set; }
+        public PlayerModel player { get; set; }
 
         public EditModel(IConfiguration configuration)
         {
-            _connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+            playerCollection = new PlayerCollection(new PlayerRepository(connectionString));
         }
 
         public void OnGet(int id)
 		{
-			players = new PlayerCollection(new PlayerRepository(_connectionString)).FindPlayerById(id);
+			player = playerCollection.FindPlayerById(id);
 		}
 
-		[BindProperty]
-		public string newPlayerName { get; set; }
-		public int newPlayerTeamId { get; set; }
-		public IActionResult OnPost(int id)
+		public IActionResult OnPostEdit(int id, string newPlayerName, int newTeamId)
 		{
-
-			return RedirectToPage("Index");
+			player = playerCollection.FindPlayerById(id);
+			player.SetName(newPlayerName);
+			player.SetTeamId(newTeamId);
+			return RedirectToPage("/Players/List");
 		}
 
-		public IActionResult OnCancel()
+		public IActionResult OnPostCancel()
 		{
-			return RedirectToPage("Index");
+			return RedirectToPage("/Players/List");
 		}
 	}
 }

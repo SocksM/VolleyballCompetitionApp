@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using VolleyballCompetitionApp.Business.Models;
 using VolleyballCompetitionApp.Business;
 using VolleyballCompetitionApp.Repository;
+using Microsoft.AspNetCore.Razor.Language;
 
 namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
 {
@@ -13,26 +14,24 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
 
 		public EditModel(IConfiguration configuration)
 		{
-			string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
-			clubCollection = new ClubCollection(new ClubRepository(connectionString), new TeamRepository(connectionString), new PlayerRepository(connectionString));
-		}
+            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+            clubCollection = new ClubCollection(new ClubRepository(connectionString), new TeamRepository(connectionString), new PlayerRepository(connectionString));
+        }
 
 		public void OnGet(int id)
 		{
 			club = clubCollection.FindClubById(id);
 		}
 
-		[BindProperty]
-		public string newClubName { get; set; }
-		public IActionResult OnPost(int id)
+		public IActionResult OnPostEdit(int id, string newClubName)
 		{
 			clubCollection.FindClubById(id).SetName(newClubName);
-			return RedirectToPage("Index");
+			return RedirectToPage("/Clubs/List");
 		}
 
-        public IActionResult OnCancel()
-        {
-            return RedirectToPage("Index");
-        }
-    }
+		public IActionResult OnPostCancel()
+		{
+			return RedirectToPage("/Clubs/List");
+		}
+	}
 }

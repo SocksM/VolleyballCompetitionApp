@@ -18,7 +18,10 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
         public List<TeamDTO> Updates { get; private set; } = new List<TeamDTO>();
         public List<int> Deletes { get; private set; } = new List<int>();
 
-        public TeamDummyRepository(string dummyConnectionString) => Console.WriteLine($"Created a team dummy repo with the connection string: \"{dummyConnectionString}\"");
+        public TeamDummyRepository()
+		{
+            Console.WriteLine($"Created a team dummy repo.");
+        }
 
 		public int Create(int clubId, string name)
 		{
@@ -39,7 +42,19 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 			Console.WriteLine($"Deleted TeamId: {id}");
 		}
 
-		public TeamDTO FindById(int id)
+        public void DeleteByClubId(int clubId)
+        {
+            foreach (TeamDTO team in _dummyDTOs)
+			{
+				if (team.ClubId == clubId)
+				{
+                    Deletes.Add(team.Id);
+                    Console.WriteLine($"Deleted TeamId: {team.Id}");
+                }
+			}
+        }
+
+        public TeamDTO FindById(int id)
 		{
 			foreach (TeamDTO dto in _dummyDTOs)
 			{
@@ -68,7 +83,9 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 			throw new Exception("Not a valid id passed to the dummy Team repository.");
 		}
 
-		public void Update(int id, int clubId, string name)
+        public List<TeamDTO> GetAllTeams() => _dummyDTOs;
+
+        public void Update(int id, int clubId, string name)
 		{
 			Updates.Add(new TeamDTO
 			{
@@ -80,5 +97,5 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 			Console.WriteLine($"  Club ID = \"{clubId}\"");
 			Console.WriteLine($"  Name = \"{name}\"");
 		}
-	}
+    }
 }

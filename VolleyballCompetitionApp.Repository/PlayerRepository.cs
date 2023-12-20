@@ -65,14 +65,13 @@ namespace VolleyballCompetitionApp.Repository
             // database connection and data fetching
             SqlConnection connection = new SqlConnection(_connectionString);
             string query = "" +
-                "select Name, ID " +
+                "Select Name, ID " +
                 "From Player " +
                 "Where TeamID = @teamId";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("teamId", teamId);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
             List<PlayerDTO> dtos = new List<PlayerDTO>();
             while (reader.Read())
             {
@@ -96,13 +95,12 @@ namespace VolleyballCompetitionApp.Repository
             string query = "" +
                 "Select Player.ID, TeamID, Player.Name " +
                 "From Player " +
-                "Inner join Team on Team.ID = Player.TeamID"  +
+                "Inner join Team on Team.ID = Player.TeamID "  +
                 "Where ClubID = @clubId";
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("clubId", clubId);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
             List<PlayerDTO> dtos = new List<PlayerDTO>();
             while (reader.Read())
             {

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.AspNetCore.Razor.Language;
 using VolleyballCompetitionApp.Business;
 using VolleyballCompetitionApp.Repository;
 
@@ -7,20 +8,23 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Players
 {
 	public class CreateModel : PageModel
 	{
-		private string _connectionString;
+        public PlayerCollection playerCollection { get; private set; }
 
-		public CreateModel(IConfiguration configuration)
+        public CreateModel(IConfiguration configuration)
 		{
-			_connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+            playerCollection = new PlayerCollection(new PlayerRepository(connectionString));
+        }
+
+		public IActionResult OnPostCreate(int teamId, string playerName) 
+		{
+			playerCollection.CreatePlayer(playerName, teamId);
+			return RedirectToPage("/Players/List");
 		}
 
-		public IActionResult OnPost(int teamId, string playerName) 
+		public IActionResult OnPostCancel()
 		{
-			return RedirectToPage("Index");
-		}
-		public IActionResult OnCancel()
-		{
-			return RedirectToPage("Index");
+			return RedirectToPage("/Players/List");
 		}
 	}
 }

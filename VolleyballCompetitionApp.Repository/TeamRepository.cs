@@ -69,7 +69,6 @@ namespace VolleyballCompetitionApp.Repository
             command.Parameters.AddWithValue("clubId", clubId);
             connection.Open();
             SqlDataReader reader = command.ExecuteReader();
-            reader.Read();
             List<TeamDTO> dtos = new List<TeamDTO>();
             while (reader.Read())
             {

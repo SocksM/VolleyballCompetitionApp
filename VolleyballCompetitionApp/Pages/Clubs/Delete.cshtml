@@ -8,6 +8,6 @@
 	<p>Are you sure you want to delete this club?</p>
 	<button type="submit" >Delete</button>
 </form>
-<form method="cancel">
-	<button type="submit">Cancel</button>
+<form method="post" asp-page-handler="Cancel">
+	<button type="submit" name="handler" value="Cancel">Cancel</button>
 </form>

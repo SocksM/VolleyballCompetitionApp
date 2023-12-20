@@ -1,25 +1,27 @@
 ﻿@page
 @model VolleyballCompetitionApp.Presentation.Pages.Teams.CreateModel
 
-<h2>Create Club</h2>
+<h2>Create Team</h2>
 
-<form method="post">
+<form method="post" asp-page-handler="Create">
 	<table>
 		<thead>
 			<tr>
 				<th>Id</th>
+				<th>Club Id</th>
 				<th>Name</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td> Auto generated Id</td>
-				<td><input type="text" name="clubName"></td>
+				<td><input type="number" name="clubId" ></td>
+				<td><input type="text" name="teamName"></td>
 			</tr>
 		</tbody>
 	</table>
 	<button type="submit">Create</button>
 </form>
-<form method="cancel">
-	<button type="submit">Cancel</button>
+<form method="post" asp-page-handler="Cancel">
+	<button type="submit" name="handler" value="Cancel">Cancel</button>
 </form>

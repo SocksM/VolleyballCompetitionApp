@@ -8039,7 +8039,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\socks\\.nuget\\packages\\": {}
+    "C:\\Users\\nieks\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
@@ -8047,11 +8047,11 @@
       "projectUniqueName": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj",
       "projectName": "VolleyballCompetitionApp.UnitTests",
       "projectPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\VolleyballCompetitionApp.UnitTests.csproj",
-      "packagesPath": "C:\\Users\\socks\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\nieks\\.nuget\\packages\\",
       "outputPath": "C:\\Github\\VolleyballCompetitionApp\\VolleyballCompetitionApp.UnitTests\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\socks\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\nieks\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

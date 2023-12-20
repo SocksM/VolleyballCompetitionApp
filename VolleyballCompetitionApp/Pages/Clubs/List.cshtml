@@ -1,0 +1,39 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Clubs.ListModel
+@{
+}
+
+<h2>Clubs</h2>
+
+<p>
+    <a asp-page="/Clubs/Create">Create New</a>
+</p>
+
+<!-- Display a list of clubs -->
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Teams</th>
+            <th>Players</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Business.Models.ClubModel club in Model.clubs) 
+        {
+            <tr>
+                <td>@club.Id</td>
+                <td>@club.Name</td>
+                <td><a asp-page="/Teams/List" asp-route-clubId="@club.Id">View Teams (@Model.teamCollection.FindTeamByClubId(club.Id).Count())</a></td>
+                <td><a asp-page="/Players/List" asp-route-clubId="@club.Id">View Players (@Model.playerCollection.FindPlayerByClubId(club.Id).Count())</a></td>
+                <td>
+                    <a asp-page="/Clubs/Edit" asp-route-id="@club.Id">Edit</a>
+                    |
+                    <a asp-page="/Clubs/Delete" asp-route-id="@club.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

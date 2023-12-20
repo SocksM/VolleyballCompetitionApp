@@ -1,0 +1,36 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Players.ListModel
+@{
+}
+
+<h2>Players</h2>
+
+<p>
+    <a asp-page="/Players/Create">Create New</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Team Id</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Business.Models.PlayerModel player in Model.players) 
+        {
+            <tr>
+                <td>@player.Id</td>
+                <td>@player.TeamId</td>
+                <td>@player.Name</td>
+                <td>
+                    <a asp-page="/Players/Edit" asp-route-id="@player.Id">Edit</a>
+                    |
+                    <a asp-page="/Players/Delete" asp-route-id="@player.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

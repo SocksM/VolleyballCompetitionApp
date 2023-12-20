@@ -4,6 +4,8 @@ using VolleyballCompetitionApp.UnitTests.DummyRepos;
 using VolleyballCompetitionApp.Interfaces.DTOs;
 using System.Runtime.CompilerServices;
 using System.Xml.Linq;
+using VolleyballCompetitionApp.Repository;
+using VolleyballCompetitionApp.Interfaces.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.UnitTests
 {
@@ -15,17 +17,16 @@ namespace VolleyballCompetitionApp.UnitTests
         [SetUp]
         public void Setup()
         {
+
         }
 
-        // find a proper way to validate test
         [Test]
-        public void DeleteClubTest() // should also test delete team and player check console output if its all there
+        public void DeleteClubTest()
         {
             // arange
-            string connectionString = "FakeDBConnString";
-            ClubDummyRepository clubRepository = new ClubDummyRepository(connectionString);
-            TeamDummyRepository teamRepository = new TeamDummyRepository(connectionString);
-            PlayerDummyRepository playerRepository = new PlayerDummyRepository(connectionString);
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
 
             ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
             
@@ -42,15 +43,19 @@ namespace VolleyballCompetitionApp.UnitTests
         }
 
         [Test]
-        public void DeleteTeamTest() // should also test delete player check console output if its all there
+        public void DeleteTeamTest()
         {
-            string connectionString = "FakeDBConnString";
-            ClubDummyRepository clubRepository = new ClubDummyRepository(connectionString);
-            TeamDummyRepository teamRepository = new TeamDummyRepository(connectionString);
-            PlayerDummyRepository playerRepository = new PlayerDummyRepository(connectionString);
+            // arange
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
 
-            ClubModel clubModel = new ClubModel(clubRepository, teamRepository, playerRepository, 1, "club 1!");
-            clubModel.DeleteTeamById(1);
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
+
+            // act
+            teamCollection.DeleteTeamById(1);
+
+            // assert
             List<int> expectedTeamDeletes = [1];
             Assert.That(teamRepository.Deletes, Is.EqualTo(expectedTeamDeletes));
             List<int> expectedPlayerDeletes = [1];
@@ -60,12 +65,16 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void DeletePlayerTest()
         {
-            string connectionString = "FakeDBConnString";
-            TeamDummyRepository teamRepository = new TeamDummyRepository(connectionString);
-            PlayerDummyRepository playerRepository = new PlayerDummyRepository(connectionString);
+            // arange
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
 
-            TeamModel teamModel = new TeamModel(teamRepository, playerRepository, 1, 1, "tem 1");
-            teamModel.DeletePlayerById(1);
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
+
+            // act
+            playerCollection.DeletePlayerById(1);
+
+            // assert
             List<int> expectedPlayerDeletes = [1];
             Assert.That(expectedPlayerDeletes, Is.EqualTo(playerRepository.Deletes));
         }
@@ -73,13 +82,17 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void CreateClubTest()
         {
-            string connectionString = "FakeDBConnString";
-            ClubDummyRepository clubRepository = new ClubDummyRepository(connectionString);
-            TeamDummyRepository teamRepository = new TeamDummyRepository(connectionString);
-            PlayerDummyRepository playerRepository = new PlayerDummyRepository(connectionString);
+            // arange
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
             ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
-            string name = "club da";
+            const string name = "club da";
+
+            // act
             ClubModel clubModel = clubCollection.CreateClub(name);
+
+            // assert
             Assert.That(clubModel.Name, Is.EqualTo(name));
             Assert.That(clubModel.Id, Is.GreaterThan(_idLowerBound));
             Assert.That(clubModel.Id, Is.LessThan(_idUpperBound));
@@ -89,30 +102,38 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void CreateClubTestError()
         {
-            string connectionString = "FakeDBConnString";
-            ClubDummyRepository clubRepository = new ClubDummyRepository(connectionString);
-            TeamDummyRepository teamRepository = new TeamDummyRepository(connectionString);
-            PlayerDummyRepository playerRepository = new PlayerDummyRepository(connectionString);
+            // arange
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
             ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
             string name = "";
-            int length = 256;
+            const int length = 256;
             for (int i = 0; i < length; i++)
             {
                 name += "a";
             }
             string expectedExceptionMessage = $"Name can't be longer than 255. Name Currently is currently {length} long.";
             TestDelegate testDelegate = new TestDelegate(() => clubCollection.CreateClub(name));
+
+            // act & assert
             Assert.That(Assert.Throws<ArgumentException>(testDelegate).Message, Is.EqualTo(expectedExceptionMessage));
         }
 
         [Test]
         public void CreateTeamTest()
         {
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
-            string name = "team da";
+            // arange
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
+            const string name = "team da";
             int clubId = 20;
-            TeamModel teamModel = clubModel.CreateTeam(name, clubId);
+
+            // act
+            TeamModel teamModel = teamCollection.CreateTeam(name, clubId);
+
+            // assert
             Assert.That(teamModel.Name, Is.EqualTo(name));
             Assert.That(teamModel.ClubId, Is.EqualTo(clubId));
             Assert.That(teamModel.Id, Is.GreaterThan(_idLowerBound));
@@ -122,28 +143,37 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void CreateTeamTestError()
         {
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+            // arange
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
             string name = "";
-            int clubId = 20;
-            int length = 256;
+            const int clubId = 20;
+            const int length = 256;
             for (int i = 0; i < length; i++)
             {
                 name += "a";
             }
             string expectedExceptionMessage = $"Name can't be longer than 255. Name Currently is currently {length} long.";
-            TestDelegate testDelegate = new TestDelegate(() => clubModel.CreateTeam(name, clubId));
+            TestDelegate testDelegate = new TestDelegate(() => teamCollection.CreateTeam(name, clubId));
+
+            // act & assert
             Assert.That(Assert.Throws<ArgumentException>(testDelegate).Message, Is.EqualTo(expectedExceptionMessage));
         }
 
         [Test]
         public void CreatePlayerTest()
         {
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
-            string name = "team da";
-            int teamId = 20;
-            PlayerModel playerModel = teamModel.CreatePlayer(name, teamId);
+            // arange
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
+            const string name = "player da";
+            const int teamId = 20;
+
+            // act
+            PlayerModel playerModel = playerCollection.CreatePlayer(name, teamId);
+
+            // assert
             Assert.That(playerModel.Name, Is.EqualTo(name));
             Assert.That(playerModel.TeamId, Is.EqualTo(teamId));
             Assert.That(playerModel.Id, Is.GreaterThan(_idLowerBound));
@@ -153,105 +183,152 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void CreatePlayerTestError()
         {
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
+            // arange
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
             string name = "";
-            int clubId = 20;
-            int length = 256;
+            const int clubId = 20;
+            const int length = 256;
             for (int i = 0; i < length; i++)
             {
                 name += "a";
             }
             string expectedExceptionMessage = $"Name can't be longer than 255. Name Currently is currently {length} long.";
-            TestDelegate testDelegate = new TestDelegate(() => teamModel.CreatePlayer(name, clubId));
+            TestDelegate testDelegate = new TestDelegate(() => playerCollection.CreatePlayer(name, clubId));
+
+            // act & assert
             Assert.That(Assert.Throws<ArgumentException>(testDelegate).Message, Is.EqualTo(expectedExceptionMessage));
         }
 
-        // place where i left off
         [Test]
         public void ClubSetNameTest()
         {
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
-            string newName = "adaba";
+            // arange
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
+            ClubModel clubModel = clubCollection.FindClubById(1);
+            const string newName = "adaba";
+            
+            // act
             clubModel.SetName(newName);
+
+            // assert
             Assert.That(clubModel.Name, Is.EqualTo(newName));
         }
 
         [Test]
         public void ClubSetNameTestError()
         {
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
+            // arange
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
+            ClubModel clubModel = clubCollection.FindClubById(1);
             string newName = "";
-            int length = 256;
-            for (int i = 0; i < length; i++) newName += "a";
-
+            const int length = 256;
+            for (int i = 0; i < length; i++)
+            {
+                newName += "a";
+            }
             string expectedExceptionMessage = $"Name can't be longer than 255. Name Currently is currently {length} long.";
             TestDelegate testDelegate = new TestDelegate(() => clubModel.SetName(newName));
+
+            // act & assert
             Assert.That(Assert.Throws<ArgumentException>(testDelegate).Message, Is.EqualTo(expectedExceptionMessage));
         }
 
         [Test]
         public void TeamSetNameTest()
         {
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
-            string newName = "batad";
+            // arange
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
+            TeamModel teamModel = teamCollection.FindTeamById(1);
+            const string newName = "batad";
+
+            // act
             teamModel.SetName(newName);
+
+            // assert
             Assert.That(teamModel.Name, Is.EqualTo(newName));
         }
 
         [Test]
         public void TeamSetNameError()
         {
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, 20, "team da");
+            // arange
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
+            TeamModel teamModel = teamCollection.FindTeamById(1);
             string newName = "";
-            int length = 256;
+            const int length = 256;
             for (int i = 0; i < length; i++)
             {
                 newName += "a";
             }
             string expectedExceptionMessage = $"Name can't be longer than 255. Name Currently is currently {length} long.";
             TestDelegate testDelegate = new TestDelegate(() => teamModel.SetName(newName));
+
+            // act & assert
             Assert.That(Assert.Throws<ArgumentException>(testDelegate).Message, Is.EqualTo(expectedExceptionMessage));
         }
 
         [Test]
         public void PlayerSetNameTest()
         {
-            string connectionString = "FakeDBConnString";
-            PlayerModel playerModel = new PlayerModel(new PlayerDummyRepository(connectionString), 20, 20, "player da");
-            string newName = "yor";
+            // arange
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
+            PlayerModel playerModel = playerCollection.FindPlayerById(1);
+            const string newName = "yor";
+
+            // act 
             playerModel.SetName(newName);
+
+            // assert
             Assert.That(playerModel.Name, Is.EqualTo(newName));
         }
 
         [Test]
         public void PlayerSetNameTestError()
         {
-            string connectionString = "FakeDBConnString";
-            PlayerModel playerModel = new PlayerModel(new PlayerDummyRepository(connectionString), 20, 20, "player da");
+            // arange
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
+            PlayerModel playerModel = playerCollection.FindPlayerById(1);
             string newName = "";
-            int length = 256;
+            const int length = 256;
             for (int i = 0; i < length; i++)
             {
                 newName += "a";
             }
             string expectedExceptionMessage = $"Name can't be longer than 255. Name Currently is currently {length} long.";
             TestDelegate testDelegate = new TestDelegate(() => playerModel.SetName(newName));
+
+            // act & assert
             Assert.That(Assert.Throws<ArgumentException>(testDelegate).Message, Is.EqualTo(expectedExceptionMessage));
         }
 
         [Test]
         public void FindClubByIDTest()
         {
+            // arange
             const int idToFindBy = 1;
             ClubDTO expectedDTO = new ClubDTO() { Id = 1, Name = "club 1!" };
-            string connectionString = "FakeDBConnString";
-            ClubCollection clubCollection = new ClubCollection(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString));
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
+
+            // act
             ClubModel model = clubCollection.FindClubById(idToFindBy);
+
+            // assert
             Assert.That(expectedDTO.Id, Is.EqualTo(idToFindBy));
             Assert.That(expectedDTO.Name, Is.EqualTo(model.Name));
         }
@@ -259,13 +336,20 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void GetAllClubsTest()
         {
-            string connectionString = "FakeDBConnString";
+            // arange
             List<ClubDTO> expectedDTOs = [
                 new ClubDTO() { Id = 1, Name = "club 1!" },
                 new ClubDTO() { Id = 2, Name = "2 club?" }
             ];
-            ClubCollection clubCollection = new ClubCollection(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString));
+            ClubDummyRepository clubRepository = new ClubDummyRepository();
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            ClubCollection clubCollection = new ClubCollection(clubRepository, teamRepository, playerRepository);
+
+            // act
             List<ClubModel> models = clubCollection.GetAllClubs();
+
+            // assert
             bool allTrueThusFar = true;
             for (int i = 0; i < expectedDTOs.Count; i++)
             {
@@ -277,22 +361,17 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void FindTeamByClubIdTest()
         {
+            // arange
             const int idToFindBy = 1;
             TeamDTO expectedDTO = new TeamDTO { Id = 1, ClubId = 1, Name = "tem 1" };
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
-            TeamModel model = clubModel.FindTeamByClubId(idToFindBy)[0];
-            Assert.That(model.Name, Is.EqualTo(expectedDTO.Name));
-            Assert.That(model.Id, Is.EqualTo(expectedDTO.Id));
-        }
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
+            
+            // act 
+            TeamModel model = teamCollection.FindTeamByClubId(idToFindBy)[0];
 
-        [Test]
-        public void FindTeamByClubIdUsingDefaultValueTest()
-        {
-            TeamDTO expectedDTO = new TeamDTO { Id = 1, ClubId = 1, Name = "tem 1" };
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, "club 1!");
-            TeamModel model = clubModel.FindTeamByClubId()[0];
+            // assert
             Assert.That(model.Name, Is.EqualTo(expectedDTO.Name));
             Assert.That(model.Id, Is.EqualTo(expectedDTO.Id));
         }
@@ -300,11 +379,17 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void FindTeamByIdTest()
         {
+            // arange
             const int idToFindBy = 1;
             TeamDTO expectedDTO = new TeamDTO { Id = 1, ClubId = 1, Name = "tem 1" };
-            string connectionString = "FakeDBConnString";
-            ClubModel clubModel = new ClubModel(new ClubDummyRepository(connectionString), new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 20, "club da");
-            TeamModel model = clubModel.FindTeamById(idToFindBy);
+            TeamDummyRepository teamRepository = new TeamDummyRepository();
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            TeamCollection teamCollection = new TeamCollection(teamRepository, playerRepository);
+            
+            // act
+            TeamModel model = teamCollection.FindTeamById(idToFindBy);
+
+            // assert
             Assert.That(model.Name, Is.EqualTo(expectedDTO.Name));
             Assert.That(model.Id, Is.EqualTo(expectedDTO.Id));
         }
@@ -312,22 +397,16 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void FindPlayerByTeamIdTest()
         {
+            // arange
             const int idToFindBy = 1;
             PlayerDTO expectedDTO = new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" };
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, 1, "club da");
-            PlayerModel model = teamModel.FindPlayerByTeamId(idToFindBy)[0];
-            Assert.That(model.Name, Is.EqualTo(expectedDTO.Name));
-            Assert.That(model.Id, Is.EqualTo(expectedDTO.Id));
-        }
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
 
-        [Test]
-        public void FindPlayerByTeamIdUsingDefaultValueTest()
-        {
-            PlayerDTO expectedDTO = new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" };
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, 1, "club da");
-            PlayerModel model = teamModel.FindPlayerByTeamId()[0];
+            // act
+            PlayerModel model = playerCollection.FindPlayerByTeamId(idToFindBy)[0];
+
+            // assert
             Assert.That(model.Name, Is.EqualTo(expectedDTO.Name));
             Assert.That(model.Id, Is.EqualTo(expectedDTO.Id));
         }
@@ -335,11 +414,16 @@ namespace VolleyballCompetitionApp.UnitTests
         [Test]
         public void FindPlayerByIdTest()
         {
+            // arange
             const int idToFindBy = 1;
             PlayerDTO expectedDTO = new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" };
-            string connectionString = "FakeDBConnString";
-            TeamModel teamModel = new TeamModel(new TeamDummyRepository(connectionString), new PlayerDummyRepository(connectionString), 1, 1, "club da");
-            PlayerModel model = teamModel.FindPlayerById(idToFindBy);
+            PlayerDummyRepository playerRepository = new PlayerDummyRepository();
+            PlayerCollection playerCollection = new PlayerCollection(playerRepository);
+
+            // act
+            PlayerModel model = playerCollection.FindPlayerById(idToFindBy);
+
+            // assert
             Assert.That(model.Name, Is.EqualTo(expectedDTO.Name));
             Assert.That(model.Id, Is.EqualTo(expectedDTO.Id));
         }

@@ -21,6 +21,10 @@ body {
   margin-bottom: 60px;
 }
 
-td {
+th {
     padding-right: 50px;
+}
+
+td {
+    padding-right: 25px;
 }

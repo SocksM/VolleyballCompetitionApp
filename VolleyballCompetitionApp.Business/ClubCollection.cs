@@ -21,7 +21,7 @@ namespace VolleyballCompetitionApp.Business
 		{
 			return new ClubModel(_clubRepository, id, _clubRepository.FindById(id).Name);
 		}
-
+		
 		public List<ClubModel> GetAllClubs()
 		{
 			List<ClubModel> clubModels = new List<ClubModel>();

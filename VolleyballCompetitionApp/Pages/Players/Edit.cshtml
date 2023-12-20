@@ -1,25 +1,27 @@
 ﻿@page
 @model VolleyballCompetitionApp.Presentation.Pages.Players.EditModel
 
-<h2>Edit Club</h2>
+<h2>Edit Player</h2>
 
-<form method="post">
+<form method="post" asp-page-handler="Edit">
 	<table>
 		<thead>
 			<tr>
 				<th>Id</th>
+				<th>Team Id</th>
 				<th>Name</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
-				@* <td>@Model.club.Id</td>
-				<td><input type="text" asp-for="newClubName"></td> *@
+				<td>@Model.player.Id</td>
+				<td><input type="number" name="newTeamId" value="@Model.player.TeamId"></td>
+				<td><input type="text" name="newPlayerName" value="@Model.player.Name"></td>
 			</tr>
 		</tbody>
 	</table>
 	<button type="submit" >Edit</button>
 </form>
-<form method="cancel">
-	<button type="submit">Cancel</button>
+<form method="post" asp-page-handler="Cancel">
+	<button type="submit" name="handler" value="Cancel">Cancel</button>
 </form>

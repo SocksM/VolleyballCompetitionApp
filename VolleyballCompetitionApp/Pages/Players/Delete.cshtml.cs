@@ -9,30 +9,28 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Players
 {
     public class DeleteModel : PageModel
     {
+		private string _connectionString;
+		public PlayerModel player { get; set; }
 
-        private ClubCollection clubCollection;
-        public ClubModel club { get; set; }
-
-        public DeleteModel(IConfiguration configuration)
-        {
-            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
-            clubCollection = new ClubCollection(new ClubRepository(connectionString), new TeamRepository(connectionString), new PlayerRepository(connectionString));
-        }
-
-        public void OnGet(int id)
-        {
-            club = clubCollection.FindClubById(id);
-        }
-
-        public IActionResult OnPost(int id, string deletetionConfirmed)
-        {
-            clubCollection.DeleteClubById(id);   
-            return RedirectToPage("Index");
-        }
-
-		public IActionResult OnCancel()
+		public DeleteModel(IConfiguration configuration)
 		{
-			return RedirectToPage("Index");
+			_connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+		}
+
+		public void OnGet(int id)
+		{
+			player = new PlayerCollection(new PlayerRepository(_connectionString)).FindPlayerById(id);
+		}
+
+		public IActionResult OnPostDelete(int id)
+		{
+			new PlayerCollection(new PlayerRepository(_connectionString)).DeletePlayerById(id);
+			return RedirectToPage("/Players/List");
+		}
+
+		public IActionResult OnPostCancel()
+		{
+			return RedirectToPage("/Players/List");
 		}
 	}
 }

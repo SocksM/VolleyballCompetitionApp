@@ -3,37 +3,37 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using VolleyballCompetitionApp.Business.Models;
 using VolleyballCompetitionApp.Business;
 using VolleyballCompetitionApp.Repository;
+using Microsoft.AspNetCore.Razor.Language;
 
 namespace VolleyballCompetitionApp.Presentation.Pages.Teams
 {
 	public class EditModel : PageModel
 	{
-		private ClubCollection clubCollection;
-		public ClubModel club { get; set; }
+        public TeamCollection teamCollection { get; private set; }
+        public TeamModel team { get; set; }
 
-		public EditModel(IConfiguration configuration)
+        public EditModel(IConfiguration configuration)
+        {
+            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+            teamCollection = new TeamCollection(new TeamRepository(connectionString), new PlayerRepository(connectionString));
+        }
+
+        public void OnGet(int id)
 		{
-			string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
-			clubCollection = new ClubCollection(new ClubRepository(connectionString), new TeamRepository(connectionString), new PlayerRepository(connectionString));
+			team = teamCollection.FindTeamById(id);
 		}
 
-		public void OnGet(int id)
+		public IActionResult OnPostEdit(int id, string newName, int newTeamId)
 		{
-			club = clubCollection.FindClubById(id);
+			team = teamCollection.FindTeamById(id);
+			team.SetName(newName);
+			team.SetClubId(newTeamId);
+			return RedirectToPage("/Teams/List");
 		}
 
-		[BindProperty]
-		public string newClubName { get; set; }
-		public IActionResult OnPost(int id)
+		public IActionResult OnPostCancel()
 		{
-			club = clubCollection.FindClubById(id);
-			club.SetName(newClubName);
-			return RedirectToPage("Index");
-		}
-
-		public IActionResult OnCancel()
-		{
-			return RedirectToPage("Index");
+			return RedirectToPage("/Teams/List");
 		}
 	}
 }
