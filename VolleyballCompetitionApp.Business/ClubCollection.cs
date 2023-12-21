@@ -36,9 +36,9 @@ namespace VolleyballCompetitionApp.Business
 		public ClubModel CreateClub(string name) // ipv van void clubmodle voor testing
 		{
 			// check if parameters are valid
-			if (!CheckIfNameValid(name))
+			if (!DataValidator.IsNameValid(name))
 			{
-				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {name.Length} long.");
+				DataValidator.ThrowInvalidNameException(name);
 			}
 
 			// database data uploading
@@ -54,16 +54,6 @@ namespace VolleyballCompetitionApp.Business
 			_clubRepository.Delete(id);
 			TeamCollection teamCollection = new TeamCollection(_teamRepository, _playerRepository);
 			teamCollection.DeleteTeamByClubId(clubDto.Id);
-		}
-
-		private bool CheckIfNameValid(string name)
-		{
-			// check if parameter is valid
-			if (name.Length > 255)
-			{
-				return false;
-			}
-			return true;
 		}
 	}
 }

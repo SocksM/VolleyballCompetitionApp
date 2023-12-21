@@ -17,8 +17,18 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
         }
 
 		public IActionResult OnPost(string clubName) 
-		{ 
-			clubCollection.CreateClub(clubName);
+		{
+			try
+			{
+				clubCollection.CreateClub(clubName);
+			}
+			catch (Exception exception)
+			{
+				TempData["ErrorMessage"] = exception.Message;
+				return RedirectToPage($"/Clubs/Create");
+			}
+
+			
 			return RedirectToPage("/Clubs/List");
 		}
 

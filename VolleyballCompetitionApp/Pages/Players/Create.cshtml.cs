@@ -8,17 +8,26 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Players
 {
 	public class CreateModel : PageModel
 	{
-        public PlayerCollection playerCollection { get; private set; }
+		public PlayerCollection playerCollection { get; private set; }
 
-        public CreateModel(IConfiguration configuration)
+		public CreateModel(IConfiguration configuration)
 		{
-            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
-            playerCollection = new PlayerCollection(new PlayerRepository(connectionString));
-        }
+			string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+			playerCollection = new PlayerCollection(new PlayerRepository(connectionString));
+		}
 
-		public IActionResult OnPostCreate(int teamId, string playerName) 
+		public IActionResult OnPostCreate(int teamId, string playerName)
 		{
-			playerCollection.CreatePlayer(playerName, teamId);
+			try
+			{
+				playerCollection.CreatePlayer(playerName, teamId);
+			}
+			catch (Exception exception)
+			{
+				TempData["ErrorMessage"] = exception.Message;
+				return RedirectToPage($"/Players/Create");
+			}
+
 			return RedirectToPage("/Players/List");
 		}
 

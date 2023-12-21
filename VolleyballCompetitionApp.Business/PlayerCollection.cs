@@ -60,9 +60,9 @@ namespace VolleyballCompetitionApp.Business
         public PlayerModel CreatePlayer(string name, int teamId) // gets a player from the database to add to the variable
         {
             // check if parameters are valid
-            if (!CheckIfNameValid(name))
+            if (!DataValidator.IsNameValid(name))
             {
-                throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {name.Length} long.");
+                DataValidator.ThrowInvalidNameException(name);
             }
 
             // database data uploading
@@ -81,16 +81,6 @@ namespace VolleyballCompetitionApp.Business
         {
             List<PlayerDTO> playerDtos = _playerRepository.FindByTeamId(teamId);
             _playerRepository.DeleteByTeamId(teamId);
-        }
-
-        private bool CheckIfNameValid(string name)
-        {
-            // check if parameter is valid
-            if (name.Length > 255)
-            {
-                return false;
-            }
-            return true;
         }
     }
 }

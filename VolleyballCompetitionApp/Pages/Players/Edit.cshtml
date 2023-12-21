@@ -1,5 +1,15 @@
 ﻿@page
 @model VolleyballCompetitionApp.Presentation.Pages.Players.EditModel
+@{
+	ViewBag.Title = "Edit Player";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["ErrorMessage"]
+	</div>
+}
 
 <h2>Edit Player</h2>
 
@@ -14,7 +24,7 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td>@Model.player.Id</td>
+				<td><input type="number" name="id" value="@Model.player.Id" readonly></td>
 				<td><input type="number" name="newTeamId" value="@Model.player.TeamId"></td>
 				<td><input type="text" name="newPlayerName" value="@Model.player.Name"></td>
 			</tr>

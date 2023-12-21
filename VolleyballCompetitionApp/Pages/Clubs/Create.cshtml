@@ -1,5 +1,15 @@
 ﻿@page
 @model VolleyballCompetitionApp.Presentation.Pages.Clubs.CreateModel
+@{
+	ViewBag.Title = "Create Club";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["ErrorMessage"]
+	</div>
+}
 
 <h2>Create Club</h2>
 

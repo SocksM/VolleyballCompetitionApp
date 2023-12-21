@@ -25,14 +25,12 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 
         public int Create(string name)
         {
-            Random random = new Random();
-            int randomNum = random.Next(50, 1000);
             Creates.Add(new ClubDTO
             {
-                Id = randomNum,
+                Id = 50,
                 Name = name
             });
-            return randomNum;
+            return 50;
         }
 
         public void Delete(int id)

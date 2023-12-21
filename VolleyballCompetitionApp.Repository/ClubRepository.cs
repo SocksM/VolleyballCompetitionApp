@@ -17,7 +17,7 @@ namespace VolleyballCompetitionApp.Repository
         {// the dto parameter shouldnt have a id yet (aka default int value) because the database will decide what the value will be
          // database connection, data uploading and fetching new id
             SqlConnection connection = new SqlConnection(_connectionString);
-            string query = "" +
+            string query =
                 "Insert into Club (Name) " +
                 "Output Inserted.ID " +
                 "Values (@name)";
@@ -88,8 +88,14 @@ namespace VolleyballCompetitionApp.Repository
         public void Update(int id, string name) // uses dto.id to dicate to what row it alters then alters that row
         {
             // dto validation (does it have all variable's filled etc?)
-            if (name.Length > 255) throw new ArgumentException("Name can't be longer than 255.");
-            if (id < 1) throw new ArgumentException("Invalid id");
+            if (name.Length > 255)
+            {
+                throw new ArgumentException("Name can't be longer than 255.");
+            }
+            if (id < 1)
+            {
+                throw new ArgumentException("Invalid id");
+            }
 
             // database connection and data uploading/dating
             SqlConnection connection = new SqlConnection(_connectionString);

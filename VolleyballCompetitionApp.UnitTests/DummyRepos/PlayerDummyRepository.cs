@@ -14,7 +14,7 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 			new PlayerDTO { Id = 1, TeamId = 1, Name = "Player 1!!" },
 			new PlayerDTO { Id = 2, TeamId = 2, Name = "2 Plaaayer" }
 			];
-		public List<PlayerDTO> Creates { get; private set; } = new List<PlayerDTO>();
+		public List<PlayerDTO> Creates { get; private set; } = new List<PlayerDTO>(); //dict
 		public List<PlayerDTO> Updates { get; private set; } = new List<PlayerDTO>();
 		public List<int> Deletes { get; private set; } = new List<int>();
 
@@ -25,14 +25,13 @@ namespace VolleyballCompetitionApp.UnitTests.DummyRepos
 
 		public int Create(int teamId, string name)
 		{
-			Random random = new Random();
-			int randomNum = random.Next(50, 1000);
-			Creates.Add( new PlayerDTO {
-				Id = randomNum, 
+			Creates.Add(new PlayerDTO 
+			{
+				Id = 50, 
 				TeamId = teamId,
 				Name = name
 			});
-			return randomNum;
+			return 50;
 		}
 
 		public void Delete(int id)

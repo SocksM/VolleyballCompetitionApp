@@ -18,7 +18,17 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Teams
 
 		public IActionResult OnPostCreate(int clubId, string teamName) 
 		{
-			teamCollection.CreateTeam(teamName, clubId);
+			try
+			{
+				teamCollection.CreateTeam(teamName, clubId);
+			}
+			catch (Exception exception)
+			{
+				TempData["ErrorMessage"] = exception.Message;
+				return RedirectToPage($"/Teams/Create");
+			}
+
+			
 			return RedirectToPage("/Teams/List");
 		}
 

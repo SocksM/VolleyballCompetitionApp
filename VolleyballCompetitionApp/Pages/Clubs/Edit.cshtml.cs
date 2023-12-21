@@ -25,7 +25,16 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Clubs
 
 		public IActionResult OnPostEdit(int id, string newClubName)
 		{
-			clubCollection.FindClubById(id).SetName(newClubName);
+			try
+			{
+				clubCollection.FindClubById(id).SetName(newClubName);
+			}
+			catch (Exception exception)
+			{
+				TempData["ErrorMessage"] = exception.Message;
+				return RedirectToPage($"/Clubs/Edit", new { id = id.ToString()});
+			}
+			
 			return RedirectToPage("/Clubs/List");
 		}
 

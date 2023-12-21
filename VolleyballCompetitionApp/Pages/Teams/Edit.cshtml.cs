@@ -25,9 +25,18 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Teams
 
 		public IActionResult OnPostEdit(int id, string newName, int newTeamId)
 		{
-			team = teamCollection.FindTeamById(id);
-			team.SetName(newName);
-			team.SetClubId(newTeamId);
+			try
+			{
+				team = teamCollection.FindTeamById(id);
+				team.SetName(newName);
+				team.SetClubId(newTeamId);
+			}
+			catch (Exception exception)
+			{
+				TempData["ErrorMessage"] = exception.Message;
+				return RedirectToPage($"/Teams/Edit", new { id = id.ToString() });
+			}
+
 			return RedirectToPage("/Teams/List");
 		}
 

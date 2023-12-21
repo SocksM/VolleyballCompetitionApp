@@ -9,25 +9,34 @@ namespace VolleyballCompetitionApp.Presentation.Pages.Players
 {
 	public class EditModel : PageModel
 	{
-        public PlayerCollection playerCollection { get; private set; }
-        public PlayerModel player { get; set; }
+		public PlayerCollection playerCollection { get; private set; }
+		public PlayerModel player { get; set; }
 
-        public EditModel(IConfiguration configuration)
-        {
-            string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
-            playerCollection = new PlayerCollection(new PlayerRepository(connectionString));
-        }
+		public EditModel(IConfiguration configuration)
+		{
+			string connectionString = configuration.GetConnectionString("DefaultConnection") ?? throw new NullReferenceException("Did you forget the connectionstring?");
+			playerCollection = new PlayerCollection(new PlayerRepository(connectionString));
+		}
 
-        public void OnGet(int id)
+		public void OnGet(int id)
 		{
 			player = playerCollection.FindPlayerById(id);
 		}
 
 		public IActionResult OnPostEdit(int id, string newPlayerName, int newTeamId)
 		{
-			player = playerCollection.FindPlayerById(id);
-			player.SetName(newPlayerName);
-			player.SetTeamId(newTeamId);
+			try
+			{
+				player = playerCollection.FindPlayerById(id);
+				player.SetName(newPlayerName);
+				player.SetTeamId(newTeamId);
+			}
+			catch (Exception exception)
+			{
+				TempData["ErrorMessage"] = exception.Message;
+				return RedirectToPage($"/Players/Edit", new { id = id.ToString() });
+			}
+
 			return RedirectToPage("/Players/List");
 		}
 
