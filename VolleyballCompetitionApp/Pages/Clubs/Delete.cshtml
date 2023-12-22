@@ -1,0 +1,16 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Clubs.DeleteModel
+@{
+	ViewBag.Title = "Delete Club";
+}
+
+<h2>Delete Club</h2>
+
+<form method="post">
+	<label >@Model.club.Name</label>
+	<p>Are you sure you want to delete this club?</p>
+	<button type="submit" >Delete</button>
+</form>
+<form method="post" asp-page-handler="Cancel">
+	<button type="submit" name="handler" value="Cancel">Cancel</button>
+</form>

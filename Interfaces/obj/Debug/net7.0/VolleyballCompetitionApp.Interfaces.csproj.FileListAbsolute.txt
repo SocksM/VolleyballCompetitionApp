@@ -1,0 +1,12 @@
+C:\Github\VolleyballCompetitionApp\Interfaces\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.deps.json
+C:\Github\VolleyballCompetitionApp\Interfaces\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.dll
+C:\Github\VolleyballCompetitionApp\Interfaces\bin\Debug\net7.0\VolleyballCompetitionApp.Interfaces.pdb
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.AssemblyInfoInputs.cache
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.AssemblyInfo.cs
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.csproj.CoreCompileInputs.cache
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.sourcelink.json
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.dll
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\refint\VolleyballCompetitionApp.Interfaces.dll
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\VolleyballCompetitionApp.Interfaces.pdb
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\ref\VolleyballCompetitionApp.Interfaces.dll

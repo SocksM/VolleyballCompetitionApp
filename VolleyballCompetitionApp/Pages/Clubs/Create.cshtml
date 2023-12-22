@@ -1,0 +1,35 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Clubs.CreateModel
+@{
+	ViewBag.Title = "Create Club";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["ErrorMessage"]
+	</div>
+}
+
+<h2>Create Club</h2>
+
+<form method="post">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td> Auto generated Id</td>
+				<td><input type="text" name="clubName"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="submit">Create</button>
+</form>
+<form method="post" asp-page-handler="Cancel">
+	<button type="submit" name="handler" value="Cancel">Cancel</button>
+</form>

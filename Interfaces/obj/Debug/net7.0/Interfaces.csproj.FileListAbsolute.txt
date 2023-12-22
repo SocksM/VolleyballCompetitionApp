@@ -1,0 +1,5 @@
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\Interfaces.GeneratedMSBuildEditorConfig.editorconfig
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\Interfaces.AssemblyInfoInputs.cache
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\Interfaces.AssemblyInfo.cs
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\Interfaces.csproj.CoreCompileInputs.cache
+C:\Github\VolleyballCompetitionApp\Interfaces\obj\Debug\net7.0\Interfaces.sourcelink.json

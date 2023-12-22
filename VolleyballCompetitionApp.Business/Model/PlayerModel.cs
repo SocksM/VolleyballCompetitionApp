@@ -1,5 +1,5 @@
 ﻿using System.Xml.Linq;
-using VolleyballCompetitionApp.Business.RepositoryInterfaces;
+using VolleyballCompetitionApp.Interfaces.RepositoryInterfaces;
 
 namespace VolleyballCompetitionApp.Business.Models
 {
@@ -21,9 +21,9 @@ namespace VolleyballCompetitionApp.Business.Models
 
 		public void SetName(string newName) // changes the name in the class and in the database
 		{
-			if (!CheckIfNameValid(newName))
+			if (!DataValidator.IsNameValid(newName))
 			{
-				throw new ArgumentException($"Name can't be longer than 255. Name Currently is currently {newName.Length} long.");
+				DataValidator.ThrowInvalidNameException(newName);
 			}
 
 			// database data uploading
@@ -33,14 +33,13 @@ namespace VolleyballCompetitionApp.Business.Models
 			Name = newName;
 		}
 
-		private bool CheckIfNameValid(string name)
+		public void SetTeamId(int teamId)
 		{
-			// check if parameter is valid
-			if (name.Length > 255)
-			{
-				return false;
-			}
-			return true;
+            // database data uploading
+            _playerRepository.Update(Id, teamId, Name);
+
+            // if no error: change var in class
+            TeamId = teamId;
 		}
 	}
 }

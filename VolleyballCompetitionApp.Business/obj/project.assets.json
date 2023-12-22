@@ -1,11 +1,30 @@
 {
   "version": 3,
   "targets": {
-    "net7.0": {}
+    "net7.0": {
+      "VolleyballCompetitionApp.Interfaces/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v7.0",
+        "compile": {
+          "bin/placeholder/VolleyballCompetitionApp.Interfaces.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/VolleyballCompetitionApp.Interfaces.dll": {}
+        }
+      }
+    }
   },
-  "libraries": {},
+  "libraries": {
+    "VolleyballCompetitionApp.Interfaces/1.0.0": {
+      "type": "project",
+      "path": "../Interfaces/VolleyballCompetitionApp.Interfaces.csproj",
+      "msbuildProject": "../Interfaces/VolleyballCompetitionApp.Interfaces.csproj"
+    }
+  },
   "projectFileDependencyGroups": {
-    "net7.0": []
+    "net7.0": [
+      "VolleyballCompetitionApp.Interfaces >= 1.0.0"
+    ]
   },
   "packageFolders": {
     "C:\\Users\\nieks\\.nuget\\packages\\": {}
@@ -33,7 +52,11 @@
       "frameworks": {
         "net7.0": {
           "targetAlias": "net7.0",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj": {
+              "projectPath": "C:\\Github\\VolleyballCompetitionApp\\Interfaces\\VolleyballCompetitionApp.Interfaces.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

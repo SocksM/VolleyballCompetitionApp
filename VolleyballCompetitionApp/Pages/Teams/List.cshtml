@@ -1,0 +1,39 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Teams.ListModel
+@{
+    ViewBag.Title = "Teams";
+}
+
+<h2>Teams</h2>
+
+<p>
+    <a asp-page="/Players/Create">Create New</a>
+</p>
+
+<table>
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Club Id</th>
+            <th>Name</th>
+            <th>Players</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Business.Models.TeamModel team in Model.teams) 
+        {
+            <tr>
+                <td>@team.Id</td>
+                <td>@team.ClubId</td>
+                <td>@team.Name</td>
+                <td><a asp-page="/Players/List" asp-route-clubId="@team.Id">View Players (@Model.playerCollection.FindPlayerByTeamId(team.Id).Count())</a></td>
+                <td>
+                    <a asp-page="/Teams/Edit" asp-route-id="@team.Id">Edit</a>
+                    |
+                    <a asp-page="/Teams/Delete" asp-route-id="@team.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

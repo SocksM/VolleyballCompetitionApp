@@ -1,0 +1,37 @@
+﻿@page
+@model VolleyballCompetitionApp.Presentation.Pages.Teams.EditModel
+@{
+	ViewBag.Title = "Edit Team";
+}
+
+@if (TempData["ErrorMessage"] != null)
+{
+	<div class="alert alert-danger">
+		@TempData["ErrorMessage"]
+	</div>
+}
+
+<h2>Edit Team</h2>
+
+<form method="post" asp-page-handler="Edit">
+	<table>
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Club Id</th>
+				<th>Name</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="number" name="id" value="@Model.team.Id" readonly></td>
+				<td><input type="number" name="newClubId" value="@Model.team.ClubId"></td>
+				<td><input type="text" name="newName" value="@Model.team.Name"></td>
+			</tr>
+		</tbody>
+	</table>
+	<button type="submit" >Edit</button>
+</form>
+<form method="post" asp-page-handler="Cancel">
+	<button type="submit" name="handler" value="Cancel">Cancel</button>
+</form>
